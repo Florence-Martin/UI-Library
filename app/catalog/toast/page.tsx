@@ -104,24 +104,26 @@ export default function ToastPage() {
       <h1 className="text-3xl font-bold">Toast Component</h1>
 
       {/* Section Preview */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Preview</h2>
-        <div className="flex flex-col space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0">
-          <Button onClick={() => addToast("info")}>Show Info Toast</Button>
-          <Button onClick={() => addToast("success")}>
-            Show Success Toast
-          </Button>
-          <Button onClick={() => addToast("warning")}>
-            Show Warning Toast
-          </Button>
-          <Button onClick={() => addToast("error")}>Show Error Toast</Button>
-        </div>
-        <div>
-          {toasts.map((toast) => (
-            <Toast key={toast.id} {...toast} />
-          ))}
-        </div>
-      </section>
+      <div className="relative">
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Preview</h2>
+          <div className="flex flex-col space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0">
+            <Button onClick={() => addToast("info")}>Show Info Toast</Button>
+            <Button onClick={() => addToast("success")}>
+              Show Success Toast
+            </Button>
+            <Button onClick={() => addToast("warning")}>
+              Show Warning Toast
+            </Button>
+            <Button onClick={() => addToast("error")}>Show Error Toast</Button>
+          </div>
+          <div>
+            {toasts.map((toast) => (
+              <Toast key={toast.id} {...toast} />
+            ))}
+          </div>
+        </section>
+      </div>
 
       {/* Section Usage */}
       <section>
