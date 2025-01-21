@@ -11,40 +11,51 @@ const alertComponentCode = `
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { AlertCircle, CheckCircle, Info, XCircle } from 'lucide-react'
+import {
+  BellOff,
+  CheckCircle,
+  Info,
+  TriangleAlert,
+  XCircle,
+  X,
+} from "lucide-react";
 
 export interface AlertProps {
   message: string
-  type?: 'success' | 'error' | 'info' | 'warning'
+  type?: 'success' | 'error' | 'info' | 'warning'| 'closable'
   onClose?: () => void
 }
 
 export function Alert({ message, type = 'info', onClose }: AlertProps) {
   const getIcon = () => {
     switch (type) {
-      case 'success':
-        return <CheckCircle className="w-5 h-5" />
-      case 'error':
-        return <XCircle className="w-5 h-5" />
-      case 'warning':
-        return <AlertCircle className="w-5 h-5" />
+      case "success":
+        return <CheckCircle className="w-5 h-5" />;
+      case "error":
+        return <XCircle className="w-5 h-5" />;
+      case "warning":
+        return <AlertTriangle className="w-5 h-5" />;
+      case "closable":
+        return <BellOff className="w-5 h-5" />;
       default:
-        return <Info className="w-5 h-5" />
+        return <Info className="w-5 h-5" />;
     }
-  }
+  };
 
   const getBackgroundColor = () => {
     switch (type) {
-      case 'success':
-        return 'bg-green-100 text-green-800'
-      case 'error':
-        return 'bg-red-100 text-red-800'
-      case 'warning':
-        return 'bg-yellow-100 text-yellow-800'
+      case "success":
+        return "bg-green-100 text-green-800";
+      case "error":
+        return "bg-red-100 text-red-800";
+      case "warning":
+        return "bg-yellow-100 text-yellow-800";
+      case "closable":
+        return "bg-gray-100 text-gray-800";
       default:
-        return 'bg-blue-100 text-blue-800'
+        return "bg-blue-100 text-blue-800";
     }
-  }
+  };
 
   return (
     <motion.div
@@ -87,7 +98,7 @@ export default function AlertPage() {
           <Alert message="This is an error alert" type="error" />
           <Alert
             message="This is a closable alert"
-            type="info"
+            type="closable"
             onClose={() => console.log("Alert closed")}
           />
         </div>
@@ -131,7 +142,8 @@ export default function MyComponent() {
           </li>
           <li>
             <code>type</code>: The type of alert (&apos;success&apos; |
-            &apos;error&apos; | &apos;info&apos; | &apos;warning&apos;)
+            &apos;error&apos; | &apos;info&apos; | &apos;warning&apos;|
+            &apos;closable&apos;)
           </li>
           <li>
             <code>onClose</code>: Optional function to call when the alert is

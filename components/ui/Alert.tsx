@@ -2,11 +2,18 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { AlertCircle, CheckCircle, Info, XCircle } from "lucide-react";
+import {
+  BellOff,
+  CheckCircle,
+  Info,
+  TriangleAlert,
+  X,
+  XCircle,
+} from "lucide-react";
 
 export interface AlertProps {
   message: string;
-  type?: "success" | "error" | "info" | "warning";
+  type?: "success" | "error" | "info" | "warning" | "closable";
   onClose?: () => void;
 }
 
@@ -18,7 +25,9 @@ export function Alert({ message, type = "info", onClose }: AlertProps) {
       case "error":
         return <XCircle className="w-5 h-5" />;
       case "warning":
-        return <AlertCircle className="w-5 h-5" />;
+        return <TriangleAlert className="w-5 h-5" />;
+      case "closable":
+        return <BellOff className="w-5 h-5" />;
       default:
         return <Info className="w-5 h-5" />;
     }
@@ -32,6 +41,8 @@ export function Alert({ message, type = "info", onClose }: AlertProps) {
         return "bg-red-100 text-red-800";
       case "warning":
         return "bg-yellow-100 text-yellow-800";
+      case "closable":
+        return "bg-gray-100 text-gray-800";
       default:
         return "bg-blue-100 text-blue-800";
     }
@@ -53,7 +64,7 @@ export function Alert({ message, type = "info", onClose }: AlertProps) {
           className="ml-auto focus:outline-none"
           aria-label="Close"
         >
-          <XCircle className="w-5 h-5" />
+          <X className="w-5 h-5" />
         </button>
       )}
     </motion.div>
