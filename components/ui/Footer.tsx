@@ -4,7 +4,7 @@ import { Linkedin, Github } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-100 dark:bg-gray-800 py-6">
+    <footer className="sticky bottom-0 bg-gray-100 dark:bg-gray-800 py-6">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-center md:text-left">
         {/* Copyright */}
         <p className="text-sm text-gray-600 dark:text-gray-300">

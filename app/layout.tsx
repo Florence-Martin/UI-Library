@@ -23,7 +23,11 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-white dark:bg-gray-900 text-gray-900 dark:text-white`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={true}
+        >
           <div className="flex flex-col min-h-screen">
             <Navbar />
             <main className="flex-grow container mx-auto px-4 py-8">

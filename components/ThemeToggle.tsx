@@ -8,6 +8,7 @@ export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const [isMounted, setIsMounted] = useState(false);
 
+  // Evite les problèmes d'hydratation
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -19,7 +20,11 @@ export default function ThemeToggle() {
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-200"
     >
-      {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+      {theme === "dark" ? (
+        <Sun size={20} className="text-yellow-500" />
+      ) : (
+        <Moon size={20} />
+      )}
     </button>
   );
 }
