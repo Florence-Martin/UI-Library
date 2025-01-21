@@ -45,7 +45,9 @@ export default function Navbar() {
           {/* Navigation à droite */}
           <div className="hidden md:flex items-center space-x-6">
             <NavItem href="/">Home</NavItem>
-            <NavItem href="/catalog">Components</NavItem>
+            <div className="dark:bg-gray-800 text-gray-300 dark:text-gray-300 px-2 py-1 rounded-md">
+              <NavItem href="/catalog">Components</NavItem>
+            </div>
             <ThemeToggle />
           </div>
 

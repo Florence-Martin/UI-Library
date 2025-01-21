@@ -31,16 +31,13 @@ export function Toast({
   }, [duration, onClose]);
 
   const getBackgroundColor = () => {
-    switch (type) {
-      case "success":
-        return "bg-green-500";
-      case "error":
-        return "bg-red-500";
-      case "warning":
-        return "bg-yellow-500";
-      default:
-        return "bg-blue-500";
-    }
+    const colors = {
+      success: "bg-green-500",
+      error: "bg-red-500",
+      warning: "bg-yellow-500",
+      info: "bg-blue-500",
+    };
+    return colors[type] || "bg-blue-500";
   };
 
   return (
@@ -51,7 +48,8 @@ export function Toast({
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
-          className={`fixed bottom-4 right-4 p-4 rounded-md text-white shadow-lg flex items-center ${getBackgroundColor()}`}
+          transition={{ duration: 0.3 }}
+          className={`fixed bottom-4 right-4 p-4 rounded-md text-white shadow-lg flex items-center ${getBackgroundColor()} z-50`}
           role="alert"
         >
           <span className="mr-2">{message}</span>
@@ -60,7 +58,7 @@ export function Toast({
               setIsVisible(false);
               if (onClose) onClose();
             }}
-            className="ml-auto focus:outline-none"
+            className="ml-auto focus:outline-none hover:text-gray-300 transition"
             aria-label="Close"
           >
             <X size={18} />
