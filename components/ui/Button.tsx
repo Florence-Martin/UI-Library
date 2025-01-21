@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
+  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:hover:bg-slate-800 dark:hover:text-slate-100 disabled:opacity-50 dark:focus:ring-slate-400 disabled:pointer-events-none dark:focus:ring-offset-slate-900",
   {
     variants: {
       variant: {
@@ -17,8 +17,9 @@ const buttonVariants = cva(
           "bg-transparent border border-slate-200 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-100",
         subtle:
           "bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-100",
-        ghost: "bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800",
-        link: "bg-transparent underline-offset-4 hover:underline text-slate-900 dark:text-slate-100",
+        ghost:
+          "bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-transparent dark:data-[state=open]:bg-transparent",
+        link: "bg-transparent underline-offset-4 hover:underline text-slate-900 dark:text-slate-100 hover:bg-transparent dark:hover:bg-transparent",
       },
       size: {
         default: "h-10 py-2 px-4",
@@ -34,29 +35,20 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends Omit<
-      React.ButtonHTMLAttributes<HTMLButtonElement>,
-      "onDrag" | "onDragStart" | "onDragEnd"
-    >,
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   isLoading?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    { className, variant, size, isLoading = false, children, ...props },
-    ref
-  ) => {
+  ({ className, variant, size, isLoading = false, ...props }, ref) => {
     return (
       <motion.button
-        className={`${buttonVariants({ variant, size })} ${className}`}
+        className={buttonVariants({ variant, size, className })}
         ref={ref}
-        disabled={isLoading || props.disabled}
+        disabled={isLoading}
         whileTap={{ scale: 0.95 }}
-        {...(props as Omit<
-          React.ComponentPropsWithoutRef<"button">,
-          "onDrag" | "onDragStart" | "onDragEnd"
-        >)}
+        {...props}
       >
         {isLoading ? (
           <svg
@@ -79,14 +71,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
             ></path>
           </svg>
-        ) : (
-          children
-        )}
+        ) : null}
+        {props.children}
       </motion.button>
     );
   }
 );
-
 Button.displayName = "Button";
 
 export { Button, buttonVariants };
