@@ -106,7 +106,7 @@ export default function ToastPage() {
       {/* Section Preview */}
       <section>
         <h2 className="text-2xl font-semibold mb-4">Preview</h2>
-        <div className="flex space-x-2">
+        <div className="flex flex-col space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0">
           <Button onClick={() => addToast("info")}>Show Info Toast</Button>
           <Button onClick={() => addToast("success")}>
             Show Success Toast
