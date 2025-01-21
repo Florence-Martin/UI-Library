@@ -14,7 +14,7 @@ import { motion } from 'framer-motion'
 
 export function Animations() {
   return (
-    <div className="space-y-8">
+    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <div>
         <h3 className="text-lg font-semibold mb-2">Fade In</h3>
         <motion.div

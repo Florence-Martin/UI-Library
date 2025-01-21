@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 
 export function Animations() {
   return (
-    <div className="space-y-8">
-      <div>
-        <h3 className="text-lg font-semibold mb-2">Fade In</h3>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center px-4 py-8">
+      <div className="flex flex-col items-center">
+        <h3 className="text-lg font-semibold mb-4 text-center">Fade In</h3>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -16,8 +16,8 @@ export function Animations() {
         />
       </div>
 
-      <div>
-        <h3 className="text-lg font-semibold mb-2">Scale</h3>
+      <div className="flex flex-col items-center">
+        <h3 className="text-lg font-semibold mb-4 text-center">Scale</h3>
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -26,8 +26,8 @@ export function Animations() {
         />
       </div>
 
-      <div>
-        <h3 className="text-lg font-semibold mb-2">Rotate</h3>
+      <div className="flex flex-col items-center">
+        <h3 className="text-lg font-semibold mb-4 text-center">Rotate</h3>
         <motion.div
           animate={{ rotate: 360 }}
           transition={{
@@ -39,8 +39,8 @@ export function Animations() {
         />
       </div>
 
-      <div>
-        <h3 className="text-lg font-semibold mb-2">Hover Effect</h3>
+      <div className="flex flex-col items-center">
+        <h3 className="text-lg font-semibold mb-4 text-center">Hover Effect</h3>
         <motion.div
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -48,8 +48,8 @@ export function Animations() {
         />
       </div>
 
-      <div>
-        <h3 className="text-lg font-semibold mb-2">Keyframes</h3>
+      <div className="flex flex-col items-center">
+        <h3 className="text-lg font-semibold mb-4 text-center">Keyframes</h3>
         <motion.div
           animate={{
             scale: [1, 2, 2, 1, 1],
