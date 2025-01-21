@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const buttonVariants = cva(
@@ -43,11 +42,10 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, isLoading = false, ...props }, ref) => {
     return (
-      <motion.button
+      <button
         className={buttonVariants({ variant, size, className })}
         ref={ref}
         disabled={isLoading}
-        whileTap={{ scale: 0.95 }}
         {...props}
       >
         {isLoading ? (
@@ -73,7 +71,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           </svg>
         ) : null}
         {props.children}
-      </motion.button>
+      </button>
     );
   }
 );
