@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { Button } from "@/components/ui/Button";
 import CodeBlock from "@/components/CodeBlock";
+import BackToCatalog from "@/components/BackToCatalog";
 
 const tooltipComponentCode = `
 'use client'
@@ -53,6 +54,8 @@ export default function TooltipPage() {
 
   return (
     <div className="container mx-auto px-4 py-8 space-y-6">
+      <BackToCatalog />
+
       <h1 className="text-3xl font-bold">Tooltip Component</h1>
 
       <section>
@@ -83,6 +86,18 @@ export default function MyComponent() {
       </section>
 
       <section>
+        <h2 className="text-2xl font-semibold mb-4">Component Code</h2>
+        <Button onClick={() => setShowComponentCode(!showComponentCode)}>
+          {showComponentCode ? "Hide Component Code" : "Show Component Code"}
+        </Button>
+        {showComponentCode && (
+          <div className="mt-4">
+            <CodeBlock code={tooltipComponentCode} language="tsx" />
+          </div>
+        )}
+      </section>
+
+      <section>
         <h2 className="text-2xl font-semibold mb-4">Props</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li>
@@ -102,18 +117,6 @@ export default function MyComponent() {
           <li>Customizable styling using Tailwind CSS</li>
           <li>Dark mode support</li>
         </ul>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Component Code</h2>
-        <Button onClick={() => setShowComponentCode(!showComponentCode)}>
-          {showComponentCode ? "Hide Component Code" : "Show Component Code"}
-        </Button>
-        {showComponentCode && (
-          <div className="mt-4">
-            <CodeBlock code={tooltipComponentCode} language="tsx" />
-          </div>
-        )}
       </section>
     </div>
   );

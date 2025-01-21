@@ -10,13 +10,16 @@ import Image from "next/image";
 const NavItem = ({
   href,
   children,
+  onClick,
 }: {
   href: string;
   children: React.ReactNode;
+  onClick?: () => void;
 }) => (
   <Link
     href={href}
     className="text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
+    onClick={onClick}
   >
     {children}
   </Link>
@@ -78,8 +81,12 @@ export default function Navbar() {
         }}
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <NavItem href="/">Home</NavItem>
-          <NavItem href="/catalog">Components</NavItem>
+          <NavItem href="/" onClick={() => setIsOpen(false)}>
+            Home
+          </NavItem>
+          <NavItem href="/catalog" onClick={() => setIsOpen(false)}>
+            Components
+          </NavItem>
         </div>
       </motion.div>
     </nav>
