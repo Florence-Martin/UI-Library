@@ -8,7 +8,16 @@ Voici la liste des frameworks et bibliothèques utilisés dans mon projet de bib
 
 1. **Next.js** : Framework React pour le rendu côté serveur et la génération de sites statiques.
 
-   - Utilisation de l'App Router (nouvelle fonctionnalité de Next.js).
+   - Utilisation de l'App Router
+
+     1. Introduit avec Next.js 13 (2022) pour remplacer le système pages/.
+
+     2. Fonctionnalités clés :
+        • Composants côté serveur (Server Components) par défaut.
+        • Layouts partagés pour une meilleure réutilisation.
+        • Streaming et Suspense avec React 18.
+        • Routes dynamiques simplifiées.
+     3. Adoption croissante et recommandé pour les nouveaux projets.
 
 2. **React** : Bibliothèque JavaScript pour la construction d'interfaces utilisateur.
 
