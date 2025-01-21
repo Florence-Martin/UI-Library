@@ -28,7 +28,7 @@ export default function NotFoundPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
-        Oops! La page que vous cherchez n&apos;est pas encore opérationnelle.
+        Oops! The page you are looking for is not yet operational.
       </motion.p>
 
       {/* Image inProgress */}
@@ -54,7 +54,7 @@ export default function NotFoundPage() {
           className="px-6 py-3 bg-blue-600 text-white rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-500 dark:hover:bg-blue-600"
         >
           <Home className="mr-4 h-5 w-5" />
-          Retour à l&apos;accueil
+          Back to home page
         </Button>
       </Link>
     </div>
