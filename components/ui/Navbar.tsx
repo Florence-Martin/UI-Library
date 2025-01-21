@@ -38,9 +38,9 @@ export default function Navbar() {
               <Image
                 src="/logo-removebg.png"
                 alt="Logo"
-                width={60}
-                height={60}
-                className="h-auto w-auto"
+                width={100}
+                height={100}
+                className="mt-2"
               />
             </Link>
           </div>
