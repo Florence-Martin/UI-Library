@@ -1,12 +1,79 @@
 "use client";
 
-import React from "react";
-import CodeBlock from "../../../components/CodeBlock";
-import { Alert } from "../../../components/ui/Alert";
+import React, { useState } from "react";
+import { Alert } from "@/components/ui/Alert";
+import { Button } from "@/components/ui/Button";
+import CodeBlock from "@/components/CodeBlock";
+
+const alertComponentCode = `
+'use client'
+
+import React from 'react'
+import { motion } from 'framer-motion'
+import { AlertCircle, CheckCircle, Info, XCircle } from 'lucide-react'
+
+export interface AlertProps {
+  message: string
+  type?: 'success' | 'error' | 'info' | 'warning'
+  onClose?: () => void
+}
+
+export function Alert({ message, type = 'info', onClose }: AlertProps) {
+  const getIcon = () => {
+    switch (type) {
+      case 'success':
+        return <CheckCircle className="w-5 h-5" />
+      case 'error':
+        return <XCircle className="w-5 h-5" />
+      case 'warning':
+        return <AlertCircle className="w-5 h-5" />
+      default:
+        return <Info className="w-5 h-5" />
+    }
+  }
+
+  const getBackgroundColor = () => {
+    switch (type) {
+      case 'success':
+        return 'bg-green-100 text-green-800'
+      case 'error':
+        return 'bg-red-100 text-red-800'
+      case 'warning':
+        return 'bg-yellow-100 text-yellow-800'
+      default:
+        return 'bg-blue-100 text-blue-800'
+    }
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+      className={\`p-4 rounded-md \${getBackgroundColor()} flex items-center\`}
+      role="alert"
+    >
+      <span className="mr-2">{getIcon()}</span>
+      <span className="flex-1">{message}</span>
+      {onClose && (
+        <button
+          onClick={onClose}
+          className="ml-auto focus:outline-none"
+          aria-label="Close"
+        >
+          <XCircle className="w-5 h-5" />
+        </button>
+      )}
+    </motion.div>
+  )
+}
+`;
 
 export default function AlertPage() {
+  const [showComponentCode, setShowComponentCode] = useState(false);
+
   return (
-    <div className="space-y-6">
+    <div className="container mx-auto px-4 py-8 space-y-6">
       <h1 className="text-3xl font-bold">Alert Component</h1>
 
       <section>
@@ -40,6 +107,18 @@ export default function MyComponent() {
 }`}
           language="tsx"
         />
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-semibold mb-4">Component Code</h2>
+        <Button onClick={() => setShowComponentCode(!showComponentCode)}>
+          {showComponentCode ? "Hide Component Code" : "Show Component Code"}
+        </Button>
+        {showComponentCode && (
+          <div className="mt-4">
+            <CodeBlock code={alertComponentCode} language="tsx" />
+          </div>
+        )}
       </section>
 
       <section>

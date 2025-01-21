@@ -16,7 +16,7 @@ export default function Catalog() {
   );
 
   return (
-    <div>
+    <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">UI Component Catalog</h1>
       <SearchBar value={searchTerm} onChange={setSearchTerm} />
       <motion.div
