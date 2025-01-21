@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Modal } from "@/components/ui/Modal";
 import { Button } from "@/components/ui/Button";
 import CodeBlock from "@/components/CodeBlock";
+import BackToCatalog from "@/components/BackToCatalog";
 
 const modalComponentCode = `
 'use client'
@@ -95,6 +96,7 @@ export default function ModalPage() {
 
   return (
     <div className="container mx-auto px-4 py-8 space-y-6">
+      <BackToCatalog />
       <h1 className="text-3xl font-bold">Modal Component</h1>
 
       <section>

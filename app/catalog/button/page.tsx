@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import CodeBlock from "@/components/CodeBlock";
+import BackToCatalog from "@/components/BackToCatalog";
 
 const buttonComponentCode = `
 import React from "react"
@@ -76,6 +77,7 @@ export default function ButtonPage() {
 
   return (
     <div className="container mx-auto px-4 py-8 space-y-6">
+      <BackToCatalog />
       <h1 className="text-3xl font-bold">Button Component</h1>
 
       <section>

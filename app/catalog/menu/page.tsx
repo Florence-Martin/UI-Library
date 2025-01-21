@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Menu } from "@/components/ui/Menu";
 import { Button } from "@/components/ui/Button";
 import CodeBlock from "@/components/CodeBlock";
+import BackToCatalog from "@/components/BackToCatalog";
 
 const menuComponentCode = `
 'use client'
@@ -91,6 +92,7 @@ export default function MenuPage() {
 
   return (
     <div className="container mx-auto px-4 py-8 space-y-6">
+      <BackToCatalog />
       <h1 className="text-3xl font-bold">Menu Component</h1>
 
       <section>

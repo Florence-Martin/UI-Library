@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Toast, type ToastProps } from "@/components/ui/Toast";
 import { Button } from "@/components/ui/Button";
 import CodeBlock from "@/components/CodeBlock";
+import BackToCatalog from "@/components/BackToCatalog";
 
 // Simulons la récupération du code source du composant
 const toastComponentCode = `
@@ -98,6 +99,8 @@ export default function ToastPage() {
 
   return (
     <div className="space-y-6">
+      <BackToCatalog />
+
       <h1 className="text-3xl font-bold">Toast Component</h1>
 
       {/* Section Preview */}

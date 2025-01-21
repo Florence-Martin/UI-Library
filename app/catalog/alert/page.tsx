@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Alert } from "@/components/ui/Alert";
 import { Button } from "@/components/ui/Button";
 import CodeBlock from "@/components/CodeBlock";
+import BackToCatalog from "@/components/BackToCatalog";
 
 const alertComponentCode = `
 'use client'
@@ -74,6 +75,7 @@ export default function AlertPage() {
 
   return (
     <div className="container mx-auto px-4 py-8 space-y-6">
+      <BackToCatalog />
       <h1 className="text-3xl font-bold">Alert Component</h1>
 
       <section>
