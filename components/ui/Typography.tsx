@@ -26,7 +26,7 @@ const fonts = [
 export function Typography() {
   const [selectedFont, setSelectedFont] = useState(fonts[0]);
   const [sampleText, setSampleText] = useState(
-    "The quick brown fox jumps over the lazy dog"
+    "Polar bears are on the brink of extinction"
   );
 
   return (
