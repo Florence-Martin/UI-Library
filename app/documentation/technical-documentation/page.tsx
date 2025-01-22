@@ -82,7 +82,7 @@ const TechnicalDocumentation: React.FC = () => {
               <strong className="text-gray-800 dark:text-white">
                 React 19+
               </strong>{" "}
-              : Bibliothèque JavaScript pour la construction d'interfaces
+              : Bibliothèque JavaScript pour la construction d&apos;interfaces
               utilisateur.
             </li>
             <li className="flex items-start gap-2">
@@ -101,14 +101,14 @@ const TechnicalDocumentation: React.FC = () => {
               <strong className="text-gray-800 dark:text-white">
                 Framer Motion
               </strong>{" "}
-              : Bibliothèque d'animation pour React.
+              : Bibliothèque d&apos;animation pour React.
             </li>
             <li className="flex items-start gap-2">
               <strong className="text-gray-800 dark:text-white">
                 next/font
               </strong>{" "}
-              : Solution de chargement et d'optimisation des polices intégrée à
-              Next.js.
+              : Solution de chargement et d&apos;optimisation des polices
+              intégrée à Next.js.
             </li>
           </ul>
         </motion.section>
@@ -165,7 +165,7 @@ const TechnicalDocumentation: React.FC = () => {
           <div className="flex items-center gap-3 mb-6">
             <Layout className="w-6 h-6 text-blue-500" />
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
-              4. Architecture de l'application
+              4. Architecture de l&apos;application
             </h2>
           </div>
 
@@ -175,7 +175,7 @@ const TechnicalDocumentation: React.FC = () => {
                 4.1 Routage
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-3">
-                L'application utilise le système de routage basé sur les
+                L&apos;application utilise le système de routage basé sur les
                 fichiers de Next.js App Router :
               </p>
               <ul className="list-disc pl-6 space-y-2 text-gray-600 dark:text-gray-300">
@@ -183,7 +183,7 @@ const TechnicalDocumentation: React.FC = () => {
                   <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
                     /app/page.tsx
                   </code>{" "}
-                  : Page d'accueil
+                  : Page d&apos;accueil
                 </li>
                 <li>
                   <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
@@ -209,7 +209,7 @@ const TechnicalDocumentation: React.FC = () => {
                   <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
                     layout.tsx
                   </code>{" "}
-                  : Layout principal de l'application, incluant le{" "}
+                  : Layout principal de l&apos;application, incluant le{" "}
                   <code>ThemeProvider</code>, <code>Navbar</code>, et{" "}
                   <code>Footer</code>.
                 </li>
@@ -236,8 +236,8 @@ const TechnicalDocumentation: React.FC = () => {
                   <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
                     ComponentCard.tsx
                   </code>{" "}
-                  : Carte affichant les informations de base d'un composant dans
-                  le catalogue.
+                  : Carte affichant les informations de base d&apos;un composant
+                  dans le catalogue.
                 </li>
                 <li>
                   <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
@@ -250,7 +250,7 @@ const TechnicalDocumentation: React.FC = () => {
 
             <div>
               <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">
-                4.3 Gestion de l'état
+                4.3 Gestion de l&apos;état
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
                 Utilisation des hooks React (
@@ -261,8 +261,9 @@ const TechnicalDocumentation: React.FC = () => {
                 <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
                   useEffect
                 </code>
-                ) pour la gestion de l'état local des composants. Pas de gestion
-                d'état globale complexe nécessaire pour cette application.
+                ) pour la gestion de l&apos;état local des composants. Pas de
+                gestion d&apos;état globale complexe nécessaire pour cette
+                application.
               </p>
             </div>
 
@@ -401,8 +402,8 @@ const TechnicalDocumentation: React.FC = () => {
             </h2>
           </div>
           <p className="text-gray-600 dark:text-gray-300">
-            L'application est conçue pour être facilement déployée sur Vercel ou
-            d'autres plateformes supportant Next.js.
+            L&apos;application est conçue pour être facilement déployée sur
+            Vercel ou d&apos;autres plateformes supportant Next.js.
           </p>
         </motion.section>
 
