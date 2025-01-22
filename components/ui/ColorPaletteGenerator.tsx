@@ -36,6 +36,7 @@ export function ColorPaletteGenerator() {
     return color;
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!validateHexColor(baseColor)) {
       setError(
@@ -112,6 +113,7 @@ export function ColorPaletteGenerator() {
 
       setPalette(newPalette);
     } catch (err) {
+      console.error("Error generating palette:", err);
       setError("Failed to generate palette. Please check the base color.");
     }
   }, [baseColor, harmonyType, shades]);
