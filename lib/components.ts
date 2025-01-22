@@ -92,4 +92,11 @@ export const components: UIComponent[] = [
     category: "Design",
     path: "/catalog/typography",
   },
+  {
+    id: "color-palette-generator",
+    name: "Color Palette Generator",
+    description:
+      "An interactive tool for creating harmonious and accessible color palettes",
+    category: "Design",
+  },
 ];

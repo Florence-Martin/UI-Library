@@ -9,6 +9,7 @@ import {
   FileCode,
   GitBranch,
   Layout,
+  Palette,
   Server,
   SquareArrowOutUpLeft,
 } from "lucide-react";
@@ -392,9 +393,86 @@ const TechnicalDocumentation: React.FC = () => {
           className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
         >
           <div className="flex items-center gap-3 mb-6">
+            <Palette className="w-6 h-6 text-blue-500" />
+            <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
+              6. ColorPaletteGenerator
+            </h2>
+          </div>
+
+          <p className="text-gray-600 dark:text-gray-300 mb-4">
+            Le <strong>ColorPaletteGenerator</strong> est un nouveau composant
+            interactif permettant de générer et d&apos;explorer des palettes de
+            couleurs adaptées aux interfaces modernes.
+          </p>
+
+          <ul className="list-disc pl-6 space-y-2 text-gray-600 dark:text-gray-300">
+            <li>
+              Génération de palettes basées sur des harmonies (analogues,
+              complémentaires, etc.).
+            </li>
+            <li>
+              Sélection interactive de la couleur de base et ajustement des
+              nuances.
+            </li>
+            <li>
+              Calcul des ratios de contraste pour garantir l&apos;accessibilité.
+            </li>
+            <li>
+              Utilisation de dépendances modernes comme{" "}
+              <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                chroma-js
+              </code>{" "}
+              et{" "}
+              <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                @radix-ui/react-slider
+              </code>
+              .
+            </li>
+            <li>
+              Intégration de composants existants :{" "}
+              <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                Button
+              </code>
+              ,{" "}
+              <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                Input
+              </code>
+              , et{" "}
+              <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                Slider
+              </code>
+              .
+            </li>
+            <li>
+              Génération optimisée de la palette avec{" "}
+              <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                useEffect
+              </code>{" "}
+              pour des performances améliorées.
+            </li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-gray-800 dark:text-white mt-6 mb-3">
+            Intégration dans le catalogue
+          </h3>
+          <p className="text-gray-600 dark:text-gray-300">
+            Une nouvelle page a été ajoutée au catalogue :{" "}
+            <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+              app/catalog/color-palette-generator/page.tsx
+            </code>
+            , permettant de prévisualiser le composant, d&apos;accéder au code
+            source et à sa documentation.
+          </p>
+        </motion.section>
+
+        <motion.section
+          variants={item}
+          className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
+        >
+          <div className="flex items-center gap-3 mb-6">
             <GitBranch className="w-6 h-6 text-blue-500" />
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
-              6. Bonnes pratiques
+              7. Bonnes pratiques
             </h2>
           </div>
           <ul className="list-disc pl-6 space-y-2 text-gray-600 dark:text-gray-300">
@@ -414,7 +492,7 @@ const TechnicalDocumentation: React.FC = () => {
           <div className="flex items-center gap-3 mb-6">
             <Server className="w-6 h-6 text-blue-500" />
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
-              7. Déploiement
+              8. Déploiement
             </h2>
           </div>
           <p className="text-gray-600 dark:text-gray-300">
@@ -430,7 +508,7 @@ const TechnicalDocumentation: React.FC = () => {
           <div className="flex items-center gap-3 mb-6">
             <GitBranch className="w-6 h-6 text-blue-500" />
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
-              8. Contribution
+              9. Contribution
             </h2>
           </div>
           <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -469,7 +547,7 @@ const TechnicalDocumentation: React.FC = () => {
           <div className="flex items-center gap-3 mb-6">
             <BookOpen className="w-6 h-6 text-blue-500" />
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
-              9. Conclusion
+              10. Conclusion
             </h2>
           </div>
           <p className="text-gray-600 dark:text-gray-300">
