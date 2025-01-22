@@ -106,10 +106,10 @@ export default function TypographyPage() {
       <section>
         <h2 className="text-2xl font-semibold mb-4">Usage</h2>
         <CodeBlock
-          code={`import { TypographyDemo } from '@/components/ui/TypographyDemo'
+          code={`import { Typography } from '@/components/ui/Typography'
 
 export default function MyComponent() {
-  return <TypographyDemo />
+  return <Typography />
 }`}
           language="tsx"
         />
