@@ -49,7 +49,7 @@ const TechnicalDocumentation: React.FC = () => {
           <div className="flex items-center gap-3 mb-4">
             <BookOpen className="w-6 h-6 text-blue-500" />
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
-              1. Vue d'ensemble
+              1. Vue d&apos;ensemble
             </h2>
           </div>
           <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -325,7 +325,7 @@ const TechnicalDocumentation: React.FC = () => {
                 </li>
                 <li>
                   Chaque composant a sa propre page de démonstration avec
-                  preview, code d'utilisation, et documentation.
+                  preview, code d&apos;utilisation, et documentation.
                 </li>
               </ul>
             </div>
