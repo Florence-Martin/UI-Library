@@ -84,8 +84,8 @@ const FontsDocumentation: React.FC = () => {
               for UI design and body text.
             </li>
             <li>
-              <strong>Roboto:</strong> Known for its readability, it's a staple
-              in Android applications.
+              <strong>Roboto:</strong> Known for its readability, it&apos;s a
+              staple in Android applications.
             </li>
             <li>
               <strong>Poppins:</strong> A geometric sans-serif font with a
@@ -138,7 +138,7 @@ const FontsDocumentation: React.FC = () => {
               4. Choosing Fonts for Your Project
             </h2>
           </div>
-          <p>Select fonts that align with your app's tone. For example:</p>
+          <p>Select fonts that align with your app&apos;s tone. For example:</p>
           <ul className="list-disc pl-6 space-y-2 text-gray-600 dark:text-gray-300">
             <li>
               <strong>Professional apps:</strong> Use clean fonts like Inter or
