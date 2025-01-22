@@ -155,12 +155,6 @@ export default function Home() {
                 <PlusCircle className="ml-2 h-5 w-5" />
               </Button>
             </Link>
-            <Link href="/catalog/notFound">
-              <Button size="lg" variant="outline">
-                Documentation
-                <PlusCircle className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
           </div>
         </div>
       </div>
