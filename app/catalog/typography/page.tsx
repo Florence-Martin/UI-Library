@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/Button";
 import CodeBlock from "@/components/CodeBlock";
 import { Typography } from "../../../components/ui/Typography";
 import BackToCatalog from "@/components/BackToCatalog";
+import { SquareArrowOutUpRight } from "lucide-react";
+import Link from "next/link";
 
 const typographyComponentCode = `
 "use client";
@@ -138,6 +140,44 @@ export default function MyComponent() {
           <li>Optimized font loading using next/font</li>
           <li>Responsive design that adapts to different screen sizes</li>
         </ul>
+      </section>
+
+      {/* Section */}
+      <section>
+        <h2 className="text-2xl font-semibold mb-4">
+          Tips for Using Fonts Effectively
+        </h2>
+
+        <ul className="list-disc pl-6 space-y-2">
+          <li>
+            Use a maximum of two or three font styles in your project to
+            maintain visual harmony.
+          </li>
+          <li>
+            Ensure sufficient contrast between text color and background for
+            readability.
+          </li>
+          <li>
+            Adjust line height and spacing for body text to enhance readability.
+          </li>
+          <li>
+            Test your fonts across devices to ensure consistent rendering.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-semibold mb-4">Learn More About Fonts</h2>
+        <p className="text-gray-600 dark:text-gray-300 mb-4">
+          Explore detailed information on modern and design-friendly fonts,
+          their use cases, and tips for effective typography.
+        </p>
+        <Link href="/fonts-documentation">
+          <Button variant="outline">
+            Explore Font Tips
+            <SquareArrowOutUpRight className="ml-2 h-4 w-4" />
+          </Button>
+        </Link>
       </section>
     </div>
   );

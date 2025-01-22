@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import {
   BookOpen,
   Code2,
@@ -9,6 +10,7 @@ import {
   GitBranch,
   Layout,
   Server,
+  SquareArrowOutUpLeft,
 } from "lucide-react";
 
 const container = {
@@ -27,6 +29,8 @@ const item = {
 };
 
 const TechnicalDocumentation: React.FC = () => {
+  const router = useRouter();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <motion.div
@@ -35,6 +39,18 @@ const TechnicalDocumentation: React.FC = () => {
         animate="show"
         variants={container}
       >
+        {/* Bouton Retour */}
+        <div className="flex items-center mb-6">
+          <button
+            onClick={() => router.back()}
+            className="flex items-center text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
+            aria-label="Go back to the previous page"
+          >
+            <SquareArrowOutUpLeft className="w-5 h-5 mr-2" />
+            Back to Technical documentation
+          </button>
+        </div>
+
         <motion.div variants={item} className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Documentation technique : UI Component Library

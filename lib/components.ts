@@ -90,5 +90,6 @@ export const components: UIComponent[] = [
     name: "Typography",
     description: "An interactive typography demo with modern font selection",
     category: "Design",
+    path: "/catalog/typography",
   },
 ];

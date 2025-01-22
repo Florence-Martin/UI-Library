@@ -27,7 +27,7 @@ export default function Home() {
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
-          <Link href="/documentation/technical-documentation">
+          <Link href="/technical-documentation">
             <Button variant="outline">
               Documentation
               <Book className="ml-2 h-4 w-4" />
