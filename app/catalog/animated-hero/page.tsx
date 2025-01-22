@@ -153,7 +153,7 @@ export function AnimatedHero({
 
       <section>
         <h2 className="text-2xl font-semibold mb-4">Preview</h2>
-        <div className="border rounded-lg overflow-hidden max-h-[500px] overflow-y-auto">
+        <div className="border rounded-lg overflow-hidden max-h-[400px] overflow-y-auto">
           <AnimatedHero
             title="Create Unique Experiences"
             subtitle="Discover Our New Experience"
@@ -169,17 +169,17 @@ export function AnimatedHero({
         <CodeBlock
           code={`import { AnimatedHero } from '@/components/ui/AnimatedHero';
 
-export default function MyComponent() {
-  return (
-    <AnimatedHero
-      title="Create Unique Experiences"
-      subtitle="Discover Our New Experience"
-      description="Transform your ideas into reality with our innovative platform. Create, innovate, and push the limits of your imagination."
-      buttonText="Get Started"
+    export default function MyComponent() {
+      return (
+        <AnimatedHero
+      title="Amazing Title"
+      subtitle="Catchy Subtitle"
+      description="This is a description that provides more details about the content."
+      buttonText="Get started"
       onButtonClick={() => alert('Button clicked!')}
-    />
-  );
-}`}
+        />
+      );
+    }`}
           language="tsx"
         />
       </section>

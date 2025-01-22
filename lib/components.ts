@@ -68,7 +68,7 @@ export const components: UIComponent[] = [
     id: "animated-hero",
     name: "Animated Hero",
     description: "An animated hero section component",
-    category: "Layout",
+    category: "Hero",
     path: "/catalog/animated-hero",
   },
   {
