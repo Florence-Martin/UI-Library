@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import chroma from "chroma-js";
 import { Slider } from "./Slider";
 import { Input } from "./Input";
@@ -18,31 +18,44 @@ export function ColorPaletteGenerator() {
     "analogous" | "triadic" | "tetradic" | "split-complementary"
   >("analogous");
   const [shades, setShades] = useState(5);
-  const [error, setError] = useState<string | null>(null); // Gestion des erreurs
+  const [error, setError] = useState<string | null>(null);
+  const [isClient, setIsClient] = useState(false);
 
-  useEffect(() => {
-    if (validateHexColor(baseColor)) {
-      setError(null); // Réinitialiser les erreurs
-      generatePalette();
-    } else {
-      setError(
-        "Invalid hexadecimal colour format. Please use #RRGGBB and/or an existing colour."
-      );
-      setPalette([]); // Vider la palette si la couleur est invalide
-    }
-  }, [baseColor, harmonyType, shades]);
+  useEffect(() => setIsClient(true), []);
 
   const validateHexColor = (color: string): boolean => {
-    const hexRegex = /^#[0-9A-Fa-f]{6}$/;
-    return hexRegex.test(color);
+    const hexRegexFull = /^#[0-9A-Fa-f]{6}$/;
+    const hexRegexShort = /^#[0-9A-Fa-f]{3}$/;
+    return hexRegexFull.test(color) || hexRegexShort.test(color);
   };
 
-  const generatePalette = () => {
+  const normalizeHexColor = (color: string): string => {
+    if (color.length === 4) {
+      return `#${color[1]}${color[1]}${color[2]}${color[2]}${color[3]}${color[3]}`;
+    }
+    return color;
+  };
+
+  useEffect(() => {
+    if (!validateHexColor(baseColor)) {
+      setError(
+        baseColor.length < 7
+          ? "Incomplete hex code. Please complete the color code."
+          : "Invalid hexadecimal color format. Please use #RRGGBB or #RGB."
+      );
+      setPalette([]);
+      return;
+    }
+
+    setError(null);
+    generatePalette();
+  }, [baseColor, harmonyType, shades]);
+
+  const generatePalette = useCallback(() => {
     try {
-      const base = chroma(baseColor);
+      const base = chroma(normalizeHexColor(baseColor));
       let colors: chroma.Color[];
 
-      // Génération des couleurs en fonction de l'harmonie sélectionnée
       switch (harmonyType) {
         case "analogous":
           colors = [
@@ -79,7 +92,6 @@ export function ColorPaletteGenerator() {
 
         default:
           colors = [base];
-          break;
       }
 
       const newPalette = colors.flatMap((color) =>
@@ -100,10 +112,11 @@ export function ColorPaletteGenerator() {
 
       setPalette(newPalette);
     } catch (err) {
-      console.error("Error generating palette:", err);
       setError("Failed to generate palette. Please check the base color.");
     }
-  };
+  }, [baseColor, harmonyType, shades]);
+
+  if (!isClient) return null;
 
   return (
     <div className="space-y-6">
