@@ -85,4 +85,10 @@ export const components: UIComponent[] = [
     category: "Feedback",
     path: "/catalog/alert",
   },
+  {
+    id: "typography",
+    name: "Typography",
+    description: "An interactive typography demo with modern font selection",
+    category: "Design",
+  },
 ];
