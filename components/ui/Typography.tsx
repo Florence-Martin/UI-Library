@@ -34,13 +34,13 @@ export function Typography() {
       <div>
         <label
           htmlFor="font-select"
-          className="block text-sm font-medium text-gray-700 mb-2"
+          className="block text-sm font-medium text-gray-400 mb-2"
         >
           Select a font:
         </label>
         <select
           id="font-select"
-          className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+          className="mt-1 block w-full pl-3 dark:bg-gray-800 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
           value={selectedFont.name}
           onChange={(e) =>
             setSelectedFont(
@@ -58,19 +58,19 @@ export function Typography() {
       <div>
         <label
           htmlFor="sample-text"
-          className="block text-sm font-medium text-gray-700 mb-2"
+          className="block text-sm font-medium text-gray-400 mb-2"
         >
           Sample text:
         </label>
         <input
           type="text"
           id="sample-text"
-          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-1 block w-full border dark:bg-gray-800 border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           value={sampleText}
           onChange={(e) => setSampleText(e.target.value)}
         />
       </div>
-      <div className="p-4 border rounded-md">
+      <div className="p-4 border border-gray-300 dark:bg-gray-800 rounded-md">
         <p className={`text-3xl ${selectedFont.font.className}`}>
           {sampleText}
         </p>
