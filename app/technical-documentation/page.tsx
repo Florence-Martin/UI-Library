@@ -353,7 +353,7 @@ const TechnicalDocumentation: React.FC = () => {
               <p className="text-gray-600 dark:text-gray-300">
                 Composants comme{" "}
                 <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
-                  TypographyDemo
+                  Typography
                 </code>{" "}
                 permettent une interaction en temps réel pour visualiser les
                 changements.
