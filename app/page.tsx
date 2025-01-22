@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { ArrowRight, PlusCircle } from "lucide-react";
+import { ArrowRight, Book, PlusCircle } from "lucide-react";
 
 export default function Home() {
   return (
@@ -20,12 +20,20 @@ export default function Home() {
           Discover a collection of modern, responsive, and customizable UI
           components built with Next.js, TypeScript, and TailwindCSS.
         </p>
-        <Link href="/catalog">
-          <Button>
-            Explore Components
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </Link>
+        <div className="flex justify-center space-x-4">
+          <Link href="/catalog">
+            <Button>
+              Explore Components
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
+          <Link href="/documentation/technical-documentation">
+            <Button variant="outline">
+              Documentation
+              <Book className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
+        </div>
       </motion.div>
 
       <div className="max-w-3xl mx-auto">
@@ -144,6 +152,12 @@ export default function Home() {
             <Link href="/catalog/notFound">
               <Button size="lg" variant="outline">
                 Contribute
+                <PlusCircle className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+            <Link href="/catalog/notFound">
+              <Button size="lg" variant="outline">
+                Documentation
                 <PlusCircle className="ml-2 h-5 w-5" />
               </Button>
             </Link>
