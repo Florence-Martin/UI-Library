@@ -17,41 +17,25 @@ export function ColorPaletteGenerator() {
   const [harmonyType, setHarmonyType] = useState<
     "analogous" | "triadic" | "tetradic" | "split-complementary"
   >("analogous");
-  const [shades, setShades] = useState(5);
+  const [shades, setShades] = useState<number>(5);
   const [error, setError] = useState<string | null>(null);
-  const [isClient, setIsClient] = useState(false);
 
-  useEffect(() => setIsClient(true), []);
-
-  const validateHexColor = (color: string): boolean => {
+  // Validation d'une couleur hexadécimale
+  const validateHexColor = useCallback((color: string): boolean => {
     const hexRegexFull = /^#[0-9A-Fa-f]{6}$/;
     const hexRegexShort = /^#[0-9A-Fa-f]{3}$/;
     return hexRegexFull.test(color) || hexRegexShort.test(color);
-  };
+  }, []);
 
-  const normalizeHexColor = (color: string): string => {
+  // Normalisation des couleurs courtes (#RGB) en longues (#RRGGBB)
+  const normalizeHexColor = useCallback((color: string): string => {
     if (color.length === 4) {
       return `#${color[1]}${color[1]}${color[2]}${color[2]}${color[3]}${color[3]}`;
     }
     return color;
-  };
+  }, []);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    if (!validateHexColor(baseColor)) {
-      setError(
-        baseColor.length < 7
-          ? "Incomplete hex code. Please complete the color code."
-          : "Invalid hexadecimal color format. Please use #RRGGBB or #RGB."
-      );
-      setPalette([]);
-      return;
-    }
-
-    setError(null);
-    generatePalette();
-  }, [baseColor, harmonyType, shades]);
-
+  // Générer la palette de couleurs
   const generatePalette = useCallback(() => {
     try {
       const base = chroma(normalizeHexColor(baseColor));
@@ -116,9 +100,22 @@ export function ColorPaletteGenerator() {
       console.error("Error generating palette:", err);
       setError("Failed to generate palette. Please check the base color.");
     }
-  }, [baseColor, harmonyType, shades]);
+  }, [baseColor, harmonyType, shades, normalizeHexColor]);
 
-  if (!isClient) return null;
+  useEffect(() => {
+    if (!validateHexColor(baseColor)) {
+      setError(
+        baseColor.length < 7
+          ? "Incomplete hex code. Please complete the color code."
+          : "Invalid hexadecimal color format. Please use #RRGGBB or #RGB."
+      );
+      setPalette([]);
+      return;
+    }
+
+    setError(null);
+    generatePalette();
+  }, [baseColor, harmonyType, shades, generatePalette, validateHexColor]);
 
   return (
     <div className="space-y-6">
@@ -157,7 +154,15 @@ export function ColorPaletteGenerator() {
         <select
           id="harmonyType"
           value={harmonyType}
-          onChange={(e) => setHarmonyType(e.target.value as any)}
+          onChange={(e) =>
+            setHarmonyType(
+              e.target.value as
+                | "analogous"
+                | "triadic"
+                | "tetradic"
+                | "split-complementary"
+            )
+          }
           className="mt-1 block w-full pl-3 pr-10 py-2 text-base dark:bg-gray-800 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
         >
           <option value="analogous">Analogous</option>
