@@ -124,9 +124,9 @@ const FontsDocumentation: React.FC = () => {
                 </p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>
-                    <strong>Source Sans Pro:</strong> Première police
-                    open-source d’Adobe, très professionnelle. Idéale pour les
-                    projets techniques ou corporatifs.
+                    <strong>Source Sans 3:</strong> Première police open-source
+                    d’Adobe, très professionnelle. Idéale pour les projets
+                    techniques ou corporatifs.
                   </li>
                   <li>
                     <strong>Fira Sans:</strong> Conçue à l’origine pour Mozilla

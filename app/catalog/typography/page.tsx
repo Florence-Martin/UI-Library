@@ -18,6 +18,14 @@ import {
   Poppins,
   Playfair_Display,
   Montserrat,
+  Open_Sans,
+  Lato,
+  Fira_Sans,
+  Manrope,
+  JetBrains_Mono,
+  Fira_Code,
+  IBM_Plex_Mono,
+  Source_Sans_3,
 } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -25,13 +33,39 @@ const roboto = Roboto({ weight: ["400", "700"], subsets: ["latin"] });
 const poppins = Poppins({ weight: ["400", "700"], subsets: ["latin"] });
 const playfair = Playfair_Display({ subsets: ["latin"] });
 const montserrat = Montserrat({ subsets: ["latin"] });
+const openSans = Open_Sans({ subsets: ["latin"] });
+const lato = Lato({ weight: ["400", "700"], subsets: ["latin"] });
+const firaSans = Fira_Sans({ weight: ["400", "700"], subsets: ["latin"] });
+const manrope = Manrope({ subsets: ["latin"] });
+const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"] });
+const firaCode = Fira_Code({ subsets: ["latin"] });
+const ibmPlexMono = IBM_Plex_Mono({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
+const SourceSans3 = Source_Sans_3({ subsets: ["latin"] });
 
 const fonts = [
+  // Modern Sans-serif Fonts
   { name: "Inter", font: inter },
   { name: "Roboto", font: roboto },
-  { name: "Poppins", font: poppins },
-  { name: "Playfair Display", font: playfair },
+  { name: "Open Sans", font: openSans },
+  { name: "Lato", font: lato },
+
+  // Geometric and Futuristic Fonts
   { name: "Montserrat", font: montserrat },
+  { name: "Poppins", font: poppins },
+  { name: "Fira Sans", font: firaSans },
+  { name: "Manrope", font: manrope },
+
+  // Monospace Fonts
+  { name: "JetBrains Mono", font: jetBrainsMono },
+  { name: "Fira Code", font: firaCode },
+  { name: "IBM Plex Mono", font: ibmPlexMono },
+  { name: "Source Sans Pro", font: SourceSans3 },
+
+  // Serif and Artistic Fonts
+  { name: "Playfair Display", font: playfair },
 ];
 
 export function Typography() {
