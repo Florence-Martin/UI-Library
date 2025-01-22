@@ -2,7 +2,11 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { BookOpen, FolderOpen, SquareArrowOutUpLeft } from "lucide-react";
+import {
+  BookOpen,
+  MousePointerClickIcon,
+  SquareArrowOutUpLeft,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Modal } from "@/components/ui/Modal";
 
@@ -51,6 +55,8 @@ const FontsDocumentation: React.FC = () => {
           </h1>
           <div className="w-32 h-1 bg-blue-500 mx-auto rounded-full"></div>
         </motion.div>
+
+        {/* Bouton pour/et modal */}
         <>
           <div className="flex justify-end  space-x-4">
             <button
@@ -58,7 +64,7 @@ const FontsDocumentation: React.FC = () => {
               className="bg-blue-500 text-white px-4 py-2 rounded flex items-center hover:bg-blue-600"
             >
               🇫🇷 Open to choose in French 😉
-              <FolderOpen className="ml-2 h-4 w-4" />
+              <MousePointerClickIcon className="ml-2 h-4 w-4" />
             </button>
           </div>
           <Modal
