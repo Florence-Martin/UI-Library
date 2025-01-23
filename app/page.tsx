@@ -21,16 +21,19 @@ export default function Home() {
           components built with Next.js, TypeScript, and TailwindCSS.
         </p>
         <div className="flex justify-center space-x-4">
-          <Link href="/catalog">
+          <Link href="/catalog" aria-label="Explore Components">
             <Button>
               Explore Components
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
             </Button>
           </Link>
-          <Link href="/technical-documentation">
+          <Link
+            href="/technical-documentation"
+            aria-label="Technical Documentation"
+          >
             <Button variant="outline">
-              Documentation
-              <Book className="ml-2 h-4 w-4" />
+              🇫🇷 Documentation
+              <Book className="ml-2 h-4 w-4" aria-hidden="true" />
             </Button>
           </Link>
         </div>
@@ -85,6 +88,13 @@ export default function Home() {
                 needs
               </li>
             </ol>
+            <p className="mt-4">
+              ‼️ Refactoring your codebase regularly is essential to maintaining
+              a scalable, maintainable and modular architecture. This practice
+              enables you to manage technical debt, continuously adapt your UI
+              library to the evolving requirements of the project and guarantee
+              a robust experience over the long term.
+            </p>
           </section>
 
           <section>
