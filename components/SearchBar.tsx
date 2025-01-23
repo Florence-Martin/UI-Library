@@ -7,7 +7,7 @@ interface SearchBarProps {
 
 export default function SearchBar({ value, onChange }: SearchBarProps) {
   return (
-    <div className="relative">
+    <div className="relative flex-grow">
       <input
         type="text"
         placeholder="Search for components..."
