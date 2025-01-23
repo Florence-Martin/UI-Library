@@ -170,6 +170,7 @@ const TechnicalDocumentation: React.FC = () => {
             │   └── CodeBlock.tsx
             ├── lib/
             │   └── components.ts
+            │   └── utils.ts
             └── public/
                 └── ...`}
           </pre>
