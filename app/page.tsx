@@ -87,6 +87,7 @@ export default function Home() {
                 Customize the component&apos;s props and styling to fit your
                 needs
               </li>
+              <li>Refactore</li>
             </ol>
             <p className="mt-4">
               ‼️ Refactoring your codebase regularly is essential to maintaining
