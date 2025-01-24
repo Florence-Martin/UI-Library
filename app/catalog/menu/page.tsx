@@ -7,77 +7,42 @@ import CodeBlock from "@/components/CodeBlock";
 import BackToCatalog from "@/components/BackToCatalog";
 
 const menuComponentCode = `
-'use client'
+"use client";
 
-import React, { useState, useRef, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
+import clsx from "clsx";
+import { useClickOutside } from "../../hooks/useClickOutside";
 
-interface MenuItem {
-  label: string
-  href: string
-}
+export function Menu({ label, items }) {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const menuRef = React.useRef(null);
 
-interface MenuProps {
-  label: string
-  items: MenuItem[]
-}
+  useClickOutside(menuRef, () => setIsOpen(false));
 
-export function Menu({ label, items }: MenuProps) {
-  const [isOpen, setIsOpen] = useState(false)
-  const menuRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setIsOpen(false)
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [])
+  const toggleMenu = () => setIsOpen((prev) => !prev);
 
   return (
     <div className="relative inline-block text-left" ref={menuRef}>
-      <div>
-        <button
-          type="button"
-          className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {label}
-          <ChevronDown className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
-        </button>
-      </div>
+      <button className={clsx("...")} onClick={toggleMenu}>
+        {label}
+        <ChevronDown className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
+      </button>
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"
-          >
-            <div className="py-1">
-              {items.map((item, index) => (
-                <a
-                  key={index}
-                  href={item.href}
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
+          <motion.div className={clsx("...")}>
+            {items.map((item, index) => (
+              <a key={index} href={item.href} className={clsx("...")}>
+                {item.label}
+              </a>
+            ))}
           </motion.div>
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 }
 `;
 
@@ -105,23 +70,37 @@ export default function MenuPage() {
       <section>
         <h2 className="text-2xl font-semibold mb-4">Usage</h2>
         <CodeBlock
-          code={`import { Menu } from '@/components/ui/Menu'
+          code={`import { Menu } from '@/components/ui/Menu';
 
 const menuItems = [
   { label: 'Profile', href: '#profile' },
   { label: 'Settings', href: '#settings' },
   { label: 'Logout', href: '#logout' },
-]
+];
 
 export default function MyComponent() {
-  return <Menu label="Options" items={menuItems} />
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <Menu label="Options" items={menuItems} />
+    </div>
+  );
 }`}
           language="tsx"
         />
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-4">Component Code</h2>
+        <h2 className="text-2xl font-semibold mb-4">Features</h2>
+        <ul className="list-disc pl-6 space-y-2">
+          <li>Custom hook to detect outside clicks</li>
+          <li>Usage of `clsx` for conditional CSS class management</li>
+          <li>Smooth animations with Framer Motion</li>
+          <li>Accessibility and customization via Tailwind CSS</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-semibold mb-4">Component code</h2>
         <Button onClick={() => setShowComponentCode(!showComponentCode)}>
           {showComponentCode ? "Hide Component Code" : "Show Component Code"}
         </Button>
@@ -140,7 +119,8 @@ export default function MyComponent() {
           </li>
           <li>
             <code>items</code>: An array of menu items, each with a{" "}
-            <code>label</code> and <code>href</code>
+            <code>label</code> (string) and <code>href</code> (string) for the
+            link.
           </li>
         </ul>
       </section>
@@ -149,9 +129,16 @@ export default function MyComponent() {
         <h2 className="text-2xl font-semibold mb-4">Features</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li>Dropdown menu with smooth animations using Framer Motion</li>
-          <li>Closes when clicking outside the menu</li>
-          <li>Accessible with keyboard navigation support</li>
+          <li>
+            Closes when clicking outside the menu using a custom hook
+            (`useClickOutside`)
+          </li>
+          <li>
+            Conditional class management with `clsx` for clean and maintainable
+            styling
+          </li>
           <li>Customizable styling using Tailwind CSS</li>
+          <li>Keyboard and accessibility-friendly design</li>
         </ul>
       </section>
     </div>
