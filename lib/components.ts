@@ -99,4 +99,10 @@ export const components: UIComponent[] = [
       "An interactive tool for creating harmonious and accessible color palettes",
     category: "Design",
   },
+  {
+    id: "searchbar",
+    name: "Searchbar",
+    description: "A search input component with customizable styles",
+    category: "Filter",
+  },
 ];

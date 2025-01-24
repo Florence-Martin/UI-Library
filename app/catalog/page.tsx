@@ -3,12 +3,19 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { components } from "@/lib/components";
-import SearchBar from "@/components/SearchBar";
 import ComponentCard from "@/components/ComponentCard";
 import { CategoryTags } from "@/components/ui/CategoryTags";
 import { Button } from "@/components/ui/Button";
+import { ProjectSearchBar } from "@/components/ProjectSearchBar";
 
-const categories = ["Navigation", "Design", "Feedback", "Overlay", "Hero"];
+const categories = [
+  "Navigation",
+  "Design",
+  "Feedback",
+  "Overlay",
+  "Hero",
+  "Filter",
+];
 
 export default function Catalog() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,7 +42,7 @@ export default function Catalog() {
       <h1 className="text-3xl font-bold mb-6">UI Component Catalog</h1>
 
       <div className="flex items-center gap-4 mb-4 w-full">
-        <SearchBar value={searchTerm} onChange={setSearchTerm} />
+        <ProjectSearchBar value={searchTerm} onChange={setSearchTerm} />
         <Button onClick={resetFilters} variant="outline">
           Reset
         </Button>

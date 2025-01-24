@@ -32,7 +32,16 @@ export default function Home() {
             aria-label="Technical Documentation"
           >
             <Button variant="outline">
-              🇫🇷 Documentation
+              🇫🇷 Documentation globale
+              <Book className="ml-2 h-4 w-4" aria-hidden="true" />
+            </Button>
+          </Link>
+          <Link
+            href="/accessibility-documentation"
+            aria-label="Accessibility Documentation"
+          >
+            <Button variant="outline">
+              🇫🇷 Documentation &quot;accessibility&quot;
               <Book className="ml-2 h-4 w-4" aria-hidden="true" />
             </Button>
           </Link>
