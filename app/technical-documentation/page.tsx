@@ -168,6 +168,8 @@ const TechnicalDocumentation: React.FC = () => {
             │   ├── SearchBar.tsx
             │   ├── ComponentCard.tsx
             │   └── CodeBlock.tsx
+            ├── hooks/
+            │   └── useClickOutside.ts
             ├── lib/
             │   └── components.ts
             │   └── utils.ts

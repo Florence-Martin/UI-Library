@@ -7,49 +7,38 @@ import CodeBlock from "@/components/CodeBlock";
 import BackToCatalog from "@/components/BackToCatalog";
 
 const modalComponentCode = `
-'use client'
+'use client';
 
-import React, { useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { X } from 'lucide-react'
+import React, { useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
+import { useClickOutside } from '../../hooks/useClickOutside';
 
 interface ModalProps {
-  isOpen: boolean
-  onClose: () => void
-  title: string
-  children: React.ReactNode
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  children: React.ReactNode;
 }
 
 export function Modal({ isOpen, onClose, title, children }: ModalProps) {
-  const modalRef = useRef<HTMLDivElement>(null)
+  const modalRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        onClose()
-      }
-    }
-
-    if (isOpen) {
-      document.addEventListener('keydown', handleEscape)
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleEscape)
-    }
-  }, [isOpen, onClose])
+  useEscapeKey(onClose);
+  useClickOutside(modalRef, onClose);
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflow = 'unset';
     }
 
     return () => {
-      document.body.style.overflow = 'unset'
-    }
-  }, [isOpen])
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   return (
     <AnimatePresence>
@@ -59,8 +48,9 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 cursor-pointer"
             onClick={onClose}
+            aria-hidden="true"
           />
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             <motion.div
@@ -69,13 +59,19 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full"
+              className="bg-background rounded-lg shadow-xl max-w-md w-full"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="modal-title"
             >
               <div className="flex justify-between items-center border-b p-4">
-                <h2 className="text-xl font-semibold">{title}</h2>
+                <h2 id="modal-title" className="text-xl font-semibold">
+                  {title}
+                </h2>
                 <button
                   onClick={onClose}
-                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                  className="text-muted-foreground hover:text-foreground"
+                  aria-label="Close modal"
                 >
                   <X size={24} />
                 </button>
@@ -86,9 +82,8 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
         </>
       )}
     </AnimatePresence>
-  )
-}
-`;
+  );
+}`;
 
 export default function ModalPage() {
   const [isOpen, setIsOpen] = useState(false);
