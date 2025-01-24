@@ -7,77 +7,69 @@ import CodeBlock from "@/components/CodeBlock";
 import BackToCatalog from "@/components/BackToCatalog";
 
 const alertComponentCode = `
-'use client'
+'use client';
 
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useCallback, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import {
   BellOff,
   CheckCircle,
   Info,
   TriangleAlert,
-  XCircle,
   X,
+  XCircle,
 } from "lucide-react";
 
 export interface AlertProps {
-  message: string
-  type?: 'success' | 'error' | 'info' | 'warning'| 'closable'
-  onClose?: () => void
+  message: string;
+  type?: 'success' | 'error' | 'info' | 'warning'| 'closable';
+  onClose?: () => void;
 }
 
 export function Alert({ message, type = 'info', onClose }: AlertProps) {
-  const getIcon = () => {
-    switch (type) {
-      case "success":
-        return <CheckCircle className="w-5 h-5" />;
-      case "error":
-        return <XCircle className="w-5 h-5" />;
-      case "warning":
-        return <AlertTriangle className="w-5 h-5" />;
-      case "closable":
-        return <BellOff className="w-5 h-5" />;
-      default:
-        return <Info className="w-5 h-5" />;
-    }
-  };
+  const iconMap = useMemo(() => ({
+    success: <CheckCircle className="w-5 h-5" />,
+    error: <XCircle className="w-5 h-5" />,
+    warning: <TriangleAlert className="w-5 h-5" />,
+    closable: <BellOff className="w-5 h-5" />,
+    info: <Info className="w-5 h-5" />,
+  }), []);
 
-  const getBackgroundColor = () => {
-    switch (type) {
-      case "success":
-        return "bg-green-100 text-green-800";
-      case "error":
-        return "bg-red-100 text-red-800";
-      case "warning":
-        return "bg-yellow-100 text-yellow-800";
-      case "closable":
-        return "bg-gray-100 text-gray-800";
-      default:
-        return "bg-blue-100 text-blue-800";
+  const backgroundColorMap = useMemo(() => ({
+    success: "bg-green-100 text-green-800",
+    error: "bg-red-100 text-red-800",
+    warning: "bg-yellow-100 text-yellow-800",
+    closable: "bg-gray-100 text-gray-800",
+    info: "bg-blue-100 text-blue-800",
+  }), []);
+
+  const handleClose = useCallback(() => {
+    if (onClose) {
+      onClose();
     }
-  };
+  }, [onClose]);
 
   return (
     <motion.div
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -50 }}
-      className={\`p-4 rounded-md \${getBackgroundColor()} flex items-center\`}
+      className={\`p-4 rounded-md \${backgroundColorMap[type]} flex items-center\`}
       role="alert"
     >
-      <span className="mr-2">{getIcon()}</span>
+      <span className="mr-2">{iconMap[type]}</span>
       <span className="flex-1">{message}</span>
       {onClose && (
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="ml-auto focus:outline-none"
           aria-label="Close"
         >
-          <XCircle className="w-5 h-5" />
+          <X className="w-5 h-5" />
         </button>
       )}
     </motion.div>
-  )
+  );
 }
 `;
 
@@ -107,7 +99,7 @@ export default function AlertPage() {
       <section>
         <h2 className="text-2xl font-semibold mb-4">Usage</h2>
         <CodeBlock
-          code={`import { Alert } from '@/components/ui/Alert'
+          code={`import { Alert } from '@/components/ui/Alert';
 
 export default function MyComponent() {
   return (
@@ -116,7 +108,7 @@ export default function MyComponent() {
       type="success"
       onClose={() => console.log('Alert closed')}
     />
-  )
+  );
 }`}
           language="tsx"
         />
