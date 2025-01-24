@@ -20,7 +20,7 @@ export default function Home() {
           Discover a collection of modern, responsive, and customizable UI
           components built with Next.js, TypeScript, and TailwindCSS.
         </p>
-        <div className="flex justify-center space-x-4">
+        <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
           <Link href="/catalog" aria-label="Explore Components">
             <Button>
               Explore Components
