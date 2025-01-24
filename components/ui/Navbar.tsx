@@ -29,7 +29,11 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 bg-white/95 backdrop-blur shadow-lg z-50">
+    <nav
+      className="sticky top-0 bg-white/95 backdrop-blur shadow-lg z-50"
+      role="navigation"
+      aria-label="Main navigation"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo à gauche */}
@@ -57,21 +61,28 @@ export default function Navbar() {
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+              className="inline-flex items-center justify-center p-2 rounded-md 
+                         text-gray-400 hover:text-white hover:bg-gray-700 
+                         focus:outline-none focus:ring-2 focus:ring-offset-2 
+                         focus:ring-offset-gray-800 focus:ring-white"
+              aria-label="Toggle menu"
+              aria-controls="mobile-menu"
+              aria-expanded={isOpen}
             >
-              <span className="sr-only">Open main menu</span>
+              {/* icône affichée selon l’état */}
               {isOpen ? (
-                <X className="block h-6 w-6" />
+                <X className="block h-6 w-6" aria-hidden="true" />
               ) : (
-                <Menu className="block h-6 w-6" />
+                <Menu className="block h-6 w-6" aria-hidden="true" />
               )}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Menu mobile */}
       <motion.div
+        id="mobile-menu"
         className={`md:hidden ${isOpen ? "block" : "hidden"}`}
         initial="closed"
         animate={isOpen ? "open" : "closed"}
