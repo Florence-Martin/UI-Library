@@ -63,7 +63,7 @@ const TechnicalDocumentation: React.FC = () => {
           variants={item}
           className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
         >
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex flex-col sm:flex-row items-center gap-3 mb-4">
             <BookOpen className="w-6 h-6 text-blue-500" />
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
               1. Vue d&apos;ensemble
@@ -81,7 +81,7 @@ const TechnicalDocumentation: React.FC = () => {
           variants={item}
           className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
         >
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex flex-col sm:flex-row items-center gap-3 mb-4">
             <Server className="w-6 h-6 text-blue-500" />
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
               2. Technologies principales
@@ -134,7 +134,7 @@ const TechnicalDocumentation: React.FC = () => {
           variants={item}
           className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
         >
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex flex-col sm:flex-row items-center gap-3 mb-4">
             <FileCode className="w-6 h-6 text-blue-500" />
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
               3. Structure du projet
@@ -183,7 +183,7 @@ const TechnicalDocumentation: React.FC = () => {
           variants={item}
           className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
         >
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex flex-col sm:flex-row items-center gap-3 mb-4">
             <Layout className="w-6 h-6 text-blue-500" />
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
               4. Architecture de l&apos;application
@@ -391,7 +391,7 @@ const TechnicalDocumentation: React.FC = () => {
           variants={item}
           className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
         >
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex flex-col sm:flex-row items-center gap-3 mb-4">
             <Code2 className="w-6 h-6 text-blue-500" />
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
               5. Fonctionnalités clés
@@ -459,7 +459,7 @@ const TechnicalDocumentation: React.FC = () => {
           variants={item}
           className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
         >
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex flex-col sm:flex-row items-center gap-3 mb-4">
             <Palette className="w-6 h-6 text-blue-500" />
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
               6. ColorPaletteGenerator
@@ -536,7 +536,7 @@ const TechnicalDocumentation: React.FC = () => {
           variants={item}
           className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
         >
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex flex-col sm:flex-row items-center gap-3 mb-4">
             <GitBranch className="w-6 h-6 text-blue-500" />
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
               7. Bonnes pratiques
@@ -556,7 +556,7 @@ const TechnicalDocumentation: React.FC = () => {
           variants={item}
           className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
         >
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex flex-col sm:flex-row items-center gap-3 mb-4">
             <Server className="w-6 h-6 text-blue-500" />
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
               8. Déploiement
@@ -572,7 +572,7 @@ const TechnicalDocumentation: React.FC = () => {
           variants={item}
           className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
         >
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex flex-col sm:flex-row items-center gap-3 mb-4">
             <GitBranch className="w-6 h-6 text-blue-500" />
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
               9. Contribution
@@ -611,7 +611,7 @@ const TechnicalDocumentation: React.FC = () => {
           variants={item}
           className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
         >
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex flex-col sm:flex-row items-center gap-3 mb-4">
             <BookOpen className="w-6 h-6 text-blue-500" />
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
               10. Conclusion
