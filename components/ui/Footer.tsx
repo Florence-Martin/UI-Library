@@ -1,36 +1,60 @@
 "use client";
 
+import { useMemo } from "react";
+import clsx from "clsx";
 import { Linkedin, Github } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
+  const currentYear = useMemo(() => new Date().getFullYear(), []);
+
   return (
-    <footer className="sticky top-[100vh] bg-gray-100 dark:bg-gray-800 py-3 z-10">
+    <footer
+      className={clsx(
+        "sticky bottom-0 bg-gray-100 dark:bg-gray-800 py-6 z-10",
+        "text-sm text-gray-600 dark:text-gray-300"
+      )}
+    >
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-center md:text-left">
         {/* Copyright */}
-        <p className="text-sm text-gray-600 dark:text-gray-300">
-          &copy; 2025 UI Component Library. All rights reserved.
-        </p>
+        <p>&copy; {currentYear} UI Component Library. All rights reserved.</p>
 
         {/* Social links */}
         <div className="mt-4 md:mt-0 flex space-x-6 justify-center md:justify-end">
-          <a
+          <SocialLink
             href="https://www.linkedin.com/in/florence-martin-922b3861/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-600 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
-          >
-            <Linkedin size={24} aria-label="LinkedIn" />
-          </a>
-          <a
+            label="LinkedIn"
+            icon={<Linkedin size={24} />}
+          />
+          <SocialLink
             href="https://github.com/Florence-Martin"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 transition-colors"
-          >
-            <Github size={24} aria-label="GitHub" />
-          </a>
+            label="GitHub"
+            icon={<Github size={24} />}
+          />
         </div>
       </div>
     </footer>
+  );
+}
+
+function SocialLink({
+  href,
+  label,
+  icon,
+}: {
+  href: string;
+  label: string;
+  icon: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-gray-600 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
+      aria-label={label}
+    >
+      {icon}
+    </Link>
   );
 }
