@@ -170,6 +170,7 @@ const TechnicalDocumentation: React.FC = () => {
             │   └── CodeBlock.tsx
             ├── hooks/
             │   └── useClickOutside.ts
+            │   └── useEscapeKey.ts
             ├── lib/
             │   └── components.ts
             │   └── utils.ts
@@ -289,7 +290,41 @@ const TechnicalDocumentation: React.FC = () => {
 
             <div>
               <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">
-                4.4 Stylisation
+                4.4 Hooks personnalisés
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-3">
+                Cette application utilise des hooks personnalisés pour
+                encapsuler des comportements réutilisables et améliorer la
+                modularité. Voici deux exemples :
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-gray-600 dark:text-gray-300">
+                <li>
+                  <strong className="text-gray-800 dark:text-white">
+                    useClickOutside
+                  </strong>
+                  : Permet de détecter les clics en dehors d&apos;un élément et
+                  de déclencher une action, comme fermer une modale ou un menu.
+                </li>
+                <li>
+                  <strong className="text-gray-800 dark:text-white">
+                    useEscapeKey
+                  </strong>{" "}
+                  : Capture la touche <em>Escape</em> pour exécuter une logique
+                  spécifique, comme la fermeture d&apos;un composant interactif.
+                </li>
+              </ul>
+              <p className="text-gray-600 dark:text-gray-300">
+                Ces hooks sont documentés et organisés dans le dossier{" "}
+                <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                  hooks/
+                </code>
+                .
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">
+                4.5 Stylisation
               </h3>
               <ul className="list-disc pl-6 space-y-2 text-gray-600 dark:text-gray-300">
                 <li>Utilisation intensive de Tailwind CSS pour le stylage.</li>
@@ -313,7 +348,36 @@ const TechnicalDocumentation: React.FC = () => {
 
             <div>
               <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">
-                4.5 Animations
+                4.6 Gestion des classes CSS avec clsx
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-3">
+                L&apos;application utilise <strong>clsx</strong> pour composer
+                les classes CSS de manière lisible et conditionnelle. Cela
+                facilite la gestion des classes dynamiques et améliore la
+                lisibilité du code.
+              </p>
+              <p className="text-gray-600 dark:text-gray-300 mb-3">
+                Exemple d&apos;utilisation typique :
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-gray-600 dark:text-gray-300">
+                <li>Concatenation de plusieurs classes CSS.</li>
+                <li>
+                  Application conditionnelle de classes selon des états (ex :{" "}
+                  <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                    isOpen
+                  </code>
+                  ).
+                </li>
+              </ul>
+              <p className="text-gray-600 dark:text-gray-300">
+                Cette approche est utilisée dans la plupart des composants pour
+                rendre le code plus propre et maintenable.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">
+                4.7 Animations
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
                 Utilisation de Framer Motion pour les animations de composants
@@ -553,11 +617,13 @@ const TechnicalDocumentation: React.FC = () => {
               10. Conclusion
             </h2>
           </div>
+
           <p className="text-gray-600 dark:text-gray-300">
-            Cette application est conçue pour être extensible et maintenable.
-            Elle suit les meilleures pratiques de développement React et
-            Next.js, tout en offrant une expérience utilisateur fluide et
-            interactive pour explorer et utiliser les composants UI.
+            En exploitant des hooks personnalisés et la bibliothèque clsx, cette
+            application atteint un niveau plus élevé de modularité et de
+            maintenabilité. Ces outils permettent de simplifier la gestion des
+            états et des classes CSS tout en favorisant une structure de code
+            cohérente.
           </p>
         </motion.section>
       </motion.div>
