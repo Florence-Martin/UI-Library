@@ -173,11 +173,11 @@ export default AnimatedHero;
         <h2 className="text-2xl font-semibold mb-4">Preview</h2>
         <div className="border rounded-lg overflow-hidden max-h-[400px] overflow-y-auto">
           <AnimatedHero
-            title="Créer des expériences uniques"
-            subtitle="Découvrez nos nouvelles fonctionnalités"
-            description="Transformez vos idées en réalité grâce à notre plateforme innovante. Créez, innovez et repoussez les limites de votre imagination."
-            buttonText="Commencer"
-            onButtonClick={() => alert("Bouton cliqué !")}
+            title="Create Unique Experiences"
+            subtitle="Discover Our New Features"
+            description="Transform your ideas into reality with our innovative platform. Create, innovate, and push the boundaries of your imagination."
+            buttonText="Get Started"
+            onButtonClick={() => alert("Button clicked!")}
           />
         </div>
       </section>
