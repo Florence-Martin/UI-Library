@@ -8,6 +8,7 @@ import {
   HandHelping,
   KeyRound,
   SquareArrowOutUpLeft,
+  TextQuote,
 } from "lucide-react";
 import DocumentationCard from "../../components/DocumentationCard";
 import { useRouter } from "next/navigation";
@@ -106,7 +107,7 @@ const AccessibilityDocumentation = () => {
       />
 
       <DocumentationCard
-        icon={<CircleHelp className="w-6 h-6 text-blue-500" />}
+        icon={<TextQuote className="w-6 h-6 text-blue-500" />}
         title="Répondre aux Différents Handicaps"
         description={
           <ul className="list-disc list-inside space-y-1 text-gray-600 dark:text-gray-300">
