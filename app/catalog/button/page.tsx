@@ -6,70 +6,72 @@ import CodeBlock from "@/components/CodeBlock";
 import BackToCatalog from "@/components/BackToCatalog";
 
 const buttonComponentCode = `
-import React from "react"
-import { motion } from "framer-motion"
-import { cva, type VariantProps } from "class-variance-authority"
+"use client";
 
+import React, { forwardRef } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import clsx from "clsx"; // Pour fusionner les classes conditionnellement
+
+// Définition des variantes de styles
 const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:hover:bg-slate-800 dark:hover:text-slate-100 disabled:opacity-50 dark:focus:ring-slate-400 disabled:pointer-events-none dark:focus:ring-offset-slate-900",
+  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
   {
     variants: {
       variant: {
-        default: "bg-slate-900 text-white hover:bg-slate-700 dark:bg-slate-50 dark:text-slate-900",
-        destructive: "bg-red-500 text-white hover:bg-red-600 dark:hover:bg-red-600",
-        outline: "bg-transparent border border-slate-200 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-100",
-        subtle: "bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-100",
-        ghost:
-          "bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-transparent dark:data-[state=open]:bg-transparent",
-        link: "bg-transparent underline-offset-4 hover:underline text-slate-900 dark:text-slate-100 hover:bg-transparent dark:hover:bg-transparent",
+        default:
+          "bg-slate-900 text-white hover:bg-slate-700 dark:bg-slate-50 dark:text-slate-900",
+        destructive:
+          "bg-red-500 text-white hover:bg-red-600 dark:hover:bg-red-600",
+        outline:
+          "bg-transparent border border-slate-200 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-100",
+        subtle:
+          "bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-100",
+        ghost: "bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800",
+        link: "bg-transparent underline hover:underline text-slate-900 dark:text-slate-100",
       },
       size: {
-        default: "h-10 py-2 px-4",
-        sm: "h-9 px-2 rounded-md",
-        lg: "h-11 px-8 rounded-md",
+        default: "h-10 px-4 py-2",
+        sm: "h-8 px-3 text-sm",
+        lg: "h-12 px-6 text-lg",
       },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
     },
-  },
-)
+  }
+);
 
-export interface ButtonProps
+// TypeScript : définition des props
+interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  isLoading?: boolean
+  isLoading?: boolean; // Indique si le bouton est en chargement
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, isLoading = false, ...props }, ref) => {
+// Composant Button avec forwardRef
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, isLoading, children, ...props }, ref) => {
     return (
-      <motion.button
-        className={buttonVariants({ variant, size, className })}
+      <button
         ref={ref}
-        disabled={isLoading}
-        whileTap={{ scale: 0.95 }}
+        className={clsx(buttonVariants({ variant, size }), className)}
+        disabled={isLoading || props.disabled}
         {...props}
       >
-        {isLoading ? (
-          <svg className="mr-2 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-            <path
-              className="opacity-75"
-              fill="currentColor"
-              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-            ></path>
-          </svg>
-        ) : null}
-        {props.children}
-      </motion.button>
-    )
-  },
-)
-Button.displayName = "Button"
+        {isLoading && (
+          <span className="mr-2 h-4 w-4 animate-spin border-2 border-current border-t-transparent rounded-full"></span>
+        )}
+        {children}
+      </button>
+    );
+  }
+);
 
-export { Button, buttonVariants }
+Button.displayName = "Button";
+
+export { Button, buttonVariants };
+
 `;
 
 export default function ButtonPage() {
@@ -82,13 +84,47 @@ export default function ButtonPage() {
 
       <section>
         <h2 className="text-2xl font-semibold mb-4">Preview</h2>
-        <div className="flex flex-wrap gap-4">
-          <Button>Default Button</Button>
-          <Button variant="destructive">Destructive</Button>
-          <Button variant="outline">Outline</Button>
-          <Button variant="subtle">Subtle</Button>
-          <Button variant="ghost">Ghost</Button>
-          <Button variant="link">Link</Button>
+        <div className="flex flex-col gap-6">
+          <div>
+            <h3 className="text-xl font-medium mb-2">Variants</h3>
+            <div className="flex flex-wrap gap-4">
+              <Button>Default Button</Button>
+              <Button variant="destructive">Destructive</Button>
+              <Button variant="outline">Outline</Button>
+              <Button variant="subtle">Subtle</Button>
+              <Button variant="ghost">Ghost</Button>
+              <Button variant="link">Link</Button>
+            </div>
+          </div>
+          <div>
+            <h3 className="text-xl font-medium mb-2">Sizes</h3>
+            <div className="flex flex-wrap gap-4">
+              <Button size="sm">Small Button</Button>
+              <Button>Default Size</Button>
+              <Button size="lg">Large Button</Button>
+            </div>
+          </div>
+          <div>
+            <h3 className="text-xl font-medium mb-2">Loading State</h3>
+            <div className="flex flex-wrap gap-4">
+              <Button isLoading>Default Loading</Button>
+              <Button variant="destructive" isLoading>
+                Destructive Loading
+              </Button>
+              <Button variant="outline" isLoading>
+                Outline Loading
+              </Button>
+              <Button variant="subtle" isLoading>
+                Subtle Loading
+              </Button>
+              <Button variant="ghost" isLoading>
+                Ghost Loading
+              </Button>
+              <Button variant="link" isLoading>
+                Link Loading
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -99,9 +135,13 @@ export default function ButtonPage() {
 
 export default function MyComponent() {
   return (
-    <Button variant="default" size="default">
-      Click me
-    </Button>
+    <div className="space-y-4">
+      <Button variant="default" size="default">Default Button</Button>
+      <Button variant="destructive" size="lg" isLoading>
+        Loading Button
+      </Button>
+      <Button variant="link" size="sm">Small Link</Button>
+    </div>
   )
 }`}
           language="tsx"
@@ -124,28 +164,69 @@ export default function MyComponent() {
         <h2 className="text-2xl font-semibold mb-4">Props</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li>
-            <code>variant</code>: &apos;default&apos; | &apos;destructive&apos;
-            | &apos;outline&apos; | &apos;subtle&apos; | &apos;ghost&apos; |
-            &apos;link&apos;
+            <code>variant</code>: Specifies the style of the button. Possible
+            values:
+            <ul className="list-disc pl-6">
+              <li>
+                <code>&apos;default&apos;</code>: Default style
+              </li>
+              <li>
+                <code>&apos;destructive&apos;</code>: Red, for destructive
+                actions
+              </li>
+              <li>
+                <code>&apos;outline&apos;</code>: Transparent with a border
+              </li>
+              <li>
+                <code>&apos;subtle&apos;</code>: Minimal background
+              </li>
+              <li>
+                <code>&apos;ghost&apos;</code>: Fully transparent
+              </li>
+              <li>
+                <code>&apos;link&apos;</code>: Text with an underline
+              </li>
+            </ul>
           </li>
           <li>
-            <code>size</code>: &apos;default&apos; | &apos;sm&apos; |
-            &apos;lg&apos;
+            <code>size</code>: Controls the size of the button. Possible values:
+            <ul className="list-disc pl-6">
+              <li>
+                <code>&apos;default&apos;</code>: Standard size
+              </li>
+              <li>
+                <code>&apos;sm&apos;</code>: Small size
+              </li>
+              <li>
+                <code>&apos;lg&apos;</code>: Large size
+              </li>
+            </ul>
           </li>
           <li>
-            <code>isLoading</code>: boolean
+            <code>isLoading</code>: A boolean to show a loading spinner
+            (default: <code>false</code>).
           </li>
-          <li>All standard button props are also supported</li>
+          <li>
+            Supports all standard HTML button props, such as{" "}
+            <code>onClick</code>, <code>disabled</code>, etc.
+          </li>
         </ul>
       </section>
 
       <section>
         <h2 className="text-2xl font-semibold mb-4">Accessibility</h2>
-        <p>
-          This button component is built with accessibility in mind. It supports
-          keyboard navigation, includes appropriate ARIA attributes, and
-          provides visual feedback for different states.
-        </p>
+        <p>This button component is designed with accessibility in mind:</p>
+        <ul className="list-disc pl-6 space-y-2">
+          <li>Fully supports keyboard navigation.</li>
+          <li>
+            Includes appropriate ARIA attributes for assistive technologies.
+          </li>
+          <li>Provides visual feedback for focus, hover, and active states.</li>
+          <li>
+            Disables interactions and updates styles when <code>disabled</code>{" "}
+            or <code>isLoading</code>.
+          </li>
+        </ul>
       </section>
     </div>
   );
