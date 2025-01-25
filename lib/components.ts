@@ -105,4 +105,11 @@ export const components: UIComponent[] = [
     description: "A search input component with customizable styles",
     category: "Filter",
   },
+  {
+    id: "wave-water",
+    name: "Wave Water",
+    description:
+      "A wave water component with animated waves that dynamically visualizes progress in percentage.",
+    category: "Progress",
+  },
 ];

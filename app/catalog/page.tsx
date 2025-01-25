@@ -15,6 +15,7 @@ const categories = [
   "Overlay",
   "Hero",
   "Filter",
+  "Progress",
 ];
 
 export default function Catalog() {
