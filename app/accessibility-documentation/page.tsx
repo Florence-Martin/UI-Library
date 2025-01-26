@@ -47,7 +47,7 @@ const AccessibilityDocumentation = () => {
           aria-label="Retour à la page précédente"
         >
           <SquareArrowOutUpLeft className="w-5 h-5 mr-2" />
-          Retour à la page d&apos;accueil
+          Back to Home page
         </button>
       </div>
 

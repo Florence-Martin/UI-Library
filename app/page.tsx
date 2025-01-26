@@ -96,15 +96,76 @@ export default function Home() {
                 Customize the component&apos;s props and styling to fit your
                 needs
               </li>
-              <li>Refactore</li>
+              <li>Refactor</li>
             </ol>
             <p className="mt-4">
               ‼️ Refactoring your codebase regularly is essential to maintaining
-              a scalable, maintainable and modular architecture. This practice
+              a scalable, maintainable, and modular architecture. This practice
               enables you to manage technical debt, continuously adapt your UI
-              library to the evolving requirements of the project and guarantee
+              library to the evolving requirements of the project, and guarantee
               a robust experience over the long term.
             </p>
+            <motion.div
+              initial={{ height: 0 }}
+              animate={{ height: "100%" }}
+              transition={{ duration: 0.5 }}
+              className="border-l-4 border-blue-600 pl-4"
+            >
+              <h4 className="text-xl font-medium mt-6 mb-4">
+                Why Refactor Your Code?
+              </h4>
+              <p className="mb-4">
+                Refactoring improves code readability, reduces complexity, and
+                enhances performance. It helps identify and eliminate redundant
+                or outdated patterns, ensures consistency across the codebase,
+                and makes your application easier to scale and maintain.
+                Additionally, separating the view (UI) from the functionality
+                (logic) improves reusability and simplifies future updates.
+              </p>
+              <h4 className="text-xl font-medium mt-6 mb-4">
+                How to Refactor?
+              </h4>
+              <p className="mb-1">
+                Follow these steps for effective refactoring:
+              </p>
+              <ol className="list-decimal pl-6 space-y-2">
+                <li>
+                  Identify the sections of code that are redundant, inefficient,
+                  or difficult to understand.
+                </li>
+                <li>
+                  Separate the view (UI) from the functionality (logic) by:
+                  <ul className="list-disc pl-6 mt-2 space-y-2">
+                    <li>Using hooks or utility functions to handle logic.</li>
+                    <li>
+                      Keeping components focused on rendering and passing logic
+                      as props when necessary.
+                    </li>
+                    <li>
+                      Moving state management to a dedicated context or store if
+                      shared across components.
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Break down large functions or components into smaller,
+                  reusable pieces.
+                </li>
+                <li>
+                  Replace hard-coded values with variables or configuration
+                  files where applicable.
+                </li>
+                <li>Remove unused imports and dependencies.</li>
+                <li>
+                  Test the refactored code thoroughly to ensure functionality
+                  remains intact.
+                </li>
+                <li>
+                  Document changes to help team members understand improvements
+                  and reasoning.
+                </li>
+              </ol>
+            </motion.div>
           </section>
 
           <section>
