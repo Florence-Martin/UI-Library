@@ -1,10 +1,4 @@
-export interface UIComponent {
-  id: string;
-  name: string;
-  description: string;
-  category: string;
-  path?: string; // Optionnel, pour spécifier un chemin si nécessaire
-}
+import { UIComponent } from "../type/type";
 
 export const components: UIComponent[] = [
   {

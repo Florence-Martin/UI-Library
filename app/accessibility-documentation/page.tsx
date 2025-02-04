@@ -198,6 +198,17 @@ const AccessibilityDocumentation = () => {
             </li>
             <li>
               <Link
+                href="https://webaim.org/resources/contrastchecker/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+                aria-label="Vérifier un contraste suffisant avec des outils comme Contrast Checker"
+              >
+                WebAIM : Web Accessibility Color Contrast Checker
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="https://www.a11yproject.com/"
                 target="_blank"
                 rel="noopener noreferrer"

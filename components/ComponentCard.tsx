@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
-import type { UIComponent } from "@/lib/components";
+import type { UIComponent } from "../type/type";
 
 interface ComponentCardProps {
   component: UIComponent;
