@@ -24,6 +24,14 @@ export const components: UIComponent[] = [
     path: "/catalog/button",
   },
   {
+    id: "card",
+    name: "Card",
+    description:
+      "A dynamic card component with a hover effect and customizable styles",
+    category: "Layout",
+    path: "/catalog/card",
+  },
+  {
     id: "tooltip",
     name: "Tooltip",
     description: "A tooltip component for displaying additional information",

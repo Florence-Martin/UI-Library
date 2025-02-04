@@ -9,12 +9,15 @@ import { Button } from "@/components/ui/Button";
 import { ProjectSearchBar } from "@/components/ProjectSearchBar";
 
 const categories = [
-  "Navigation",
+  "Animation",
   "Design",
   "Feedback",
-  "Overlay",
-  "Hero",
   "Filter",
+  "Form",
+  "Hero",
+  "Layout",
+  "Navigation",
+  "Overlay",
   "Progress",
 ];
 
