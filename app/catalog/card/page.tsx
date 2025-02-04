@@ -6,6 +6,7 @@ import BackToCatalog from "@/components/BackToCatalog";
 import CodeBlock from "@/components/CodeBlock";
 import { Button } from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
+import CardSkeleton from "@/components/ui/CardSkeleton";
 
 const buttonComponentCode = `"use client";
 
@@ -46,8 +47,9 @@ const CardPage = () => {
         <h2 className="text-2xl font-semibold mb-4">Preview</h2>
 
         <div>
-          <div className="flex items-center justify-center ">
+          <div className="flex items-center justify-center space-x-4">
             <Card />
+            <CardSkeleton />
           </div>
         </div>
       </section>
