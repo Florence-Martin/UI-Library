@@ -2,7 +2,7 @@
 
 import React from "react";
 
-const Card: React.FC = () => {
+const SlideCard: React.FC = () => {
   return (
     <div className="relative group cursor-pointer group overflow-hidden text-gray-50 h-72 w-56 rounded-2xl hover:duration-700 duration-700">
       <div className="w-56 h-72 bg-lime-400 text-gray-800">
@@ -23,4 +23,4 @@ const Card: React.FC = () => {
   );
 };
 
-export default Card;
+export default SlideCard;

@@ -40,11 +40,25 @@ interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   isLoading?: boolean; // Indique si le bouton est en chargement
+  startIcon?: React.ReactNode; // Icône au début du bouton
+  endIcon?: React.ReactNode; // Icône à la fin du bouton
 }
 
 // Composant Button avec forwardRef
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, isLoading, children, ...props }, ref) => {
+  (
+    {
+      className,
+      variant,
+      size,
+      isLoading,
+      startIcon,
+      endIcon,
+      children,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <button
         ref={ref}
@@ -52,10 +66,18 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={isLoading || props.disabled}
         {...props}
       >
-        {isLoading && (
-          <span className="mr-2 h-4 w-4 animate-spin border-2 border-current border-t-transparent rounded-full"></span>
+        {isLoading ? (
+          <>
+            <span className="mr-2 h-4 w-4 animate-spin border-2 border-current border-t-transparent rounded-full"></span>
+            {children}
+          </>
+        ) : (
+          <>
+            {startIcon && <span className="mr-2">{startIcon}</span>}
+            {children}
+            {endIcon && <span className="ml-2">{endIcon}</span>}
+          </>
         )}
-        {children}
       </button>
     );
   }

@@ -1,6 +1,6 @@
 import React from "react";
 
-const CardSkeleton: React.FC = () => {
+const SlideCardSkeleton: React.FC = () => {
   return (
     <div className="relative group cursor-pointer overflow-hidden text-gray-50 h-72 w-56 rounded-2xl bg-gray-200 animate-pulse">
       <div className="w-56 h-72 bg-gray-300">
@@ -21,4 +21,4 @@ const CardSkeleton: React.FC = () => {
   );
 };
 
-export default CardSkeleton;
+export default SlideCardSkeleton;
