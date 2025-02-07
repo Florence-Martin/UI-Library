@@ -41,6 +41,13 @@ Voici la liste des frameworks et bibliothèques utilisés dans mon projet de bib
 
 12. **tailwind-merge** : Utilitaire pour fusionner efficacement les classes Tailwind.
 
+13. **Firebase Firestore** :
+
+- Base NoSQL en temps réel → Récupère les composants dynamiquement.
+- Pas besoin de serveur → Next.js interagit directement avec Firestore via l’API Firebase.
+- Gratuit jusqu’à une large utilisation → Idéal pour un projet UI showcase.
+- Facile à administrer → Ajoute/modifie/supprime des composants via la console Firebase.
+
 ---
 
 ### Description
