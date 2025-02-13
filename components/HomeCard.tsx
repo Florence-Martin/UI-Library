@@ -1,5 +1,6 @@
 import React from "react";
-import { motion, Variants } from "framer-motion";
+import { useRef } from "react";
+import { motion, Variants, useScroll, useTransform } from "framer-motion";
 
 interface HomeCardProps {
   icon?: React.ReactNode;
@@ -16,8 +17,18 @@ const HomeCard: React.FC<HomeCardProps> = ({
   ariaLabel,
   variants,
 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [100, 0, 0, -100]);
   return (
     <motion.section
+      ref={ref}
+      style={{ opacity, y }}
       className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
       aria-labelledby={ariaLabel}
       initial="hidden"
