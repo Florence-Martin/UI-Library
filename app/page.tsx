@@ -249,7 +249,7 @@ export default function Home() {
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>
-          <Link href="/catalog/notFound">
+          <Link href="/contribute">
             <Button size="lg" variant="outline" className="w-full sm:w-auto">
               Contribute
               <PlusCircle className="ml-2 h-5 w-5" />
