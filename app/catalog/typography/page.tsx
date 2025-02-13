@@ -130,7 +130,7 @@ export default function TypographyPage() {
   const [showComponentCode, setShowComponentCode] = useState(false);
 
   return (
-    <div className="container mx-auto px-4 py-8 space-y-6">
+    <div className="container mx-auto mb-20 sm:mb-3 px-4 py-8 space-y-6">
       <BackToCatalog />
       <h1 className="text-3xl font-bold">Typography Demo Component</h1>
 

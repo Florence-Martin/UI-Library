@@ -63,7 +63,7 @@ export default function WaveWaterPage() {
   const [percent, setPercent] = useState(50);
 
   return (
-    <div className="container mx-auto px-4 py-8 space-y-6">
+    <div className="container mx-auto mb-20 sm:mb-3 px-4 py-8 space-y-6">
       <BackToCatalog />
       <h1 className="text-3xl font-bold">Wave Water Component</h1>
 

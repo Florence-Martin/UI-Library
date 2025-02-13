@@ -163,7 +163,7 @@ export default AnimatedHero;
 `;
 
   return (
-    <div className="container mx-auto px-4 py-8 space-y-6">
+    <div className="container mx-auto mb-8 sm:mb-3  px-4 py-8 space-y-6">
       <BackToCatalog />
 
       <h1 className="text-3xl font-bold">Composant Animated Hero</h1>
