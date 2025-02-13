@@ -35,7 +35,7 @@ const AccessibilityDocumentation = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <motion.div
-        className="max-w-4xl mx-auto p-6 space-y-8"
+        className="max-w-4xl mb-20 sm:mb-8 mx-auto p-6 space-y-8"
         initial="hidden"
         animate="show"
         variants={container}

@@ -42,7 +42,7 @@ export default function Catalog() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto mb-20 sm:mb-8  px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">UI Component Catalog</h1>
 
       <div className="flex items-center gap-4 mb-4 w-full">
