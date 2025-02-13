@@ -2,53 +2,14 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { ArrowRight, Book, PlusCircle } from "lucide-react";
+import { ArrowRight, PlusCircle } from "lucide-react";
+import HeroSection from "@/components/HeroSection";
 
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="text-center mb-12"
-      >
-        <h1 className="text-4xl font-bold mb-6">
-          Welcome to UI Component Library
-        </h1>
-        <p className="text-xl mb-8">
-          Discover a collection of modern, responsive, and customizable UI
-          components built with Next.js, TypeScript, and TailwindCSS.
-        </p>
-        <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
-          <Link href="/catalog" aria-label="Explore Components">
-            <Button>
-              Explore Components
-              <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-            </Button>
-          </Link>
-          <Link
-            href="/technical-documentation"
-            aria-label="Technical Documentation"
-          >
-            <Button variant="outline">
-              🇫🇷 Documentation globale
-              <Book className="ml-2 h-4 w-4" aria-hidden="true" />
-            </Button>
-          </Link>
-          <Link
-            href="/accessibility-documentation"
-            aria-label="Accessibility Documentation"
-          >
-            <Button variant="outline">
-              🇫🇷 Documentation &quot;accessibility&quot;
-              <Book className="ml-2 h-4 w-4" aria-hidden="true" />
-            </Button>
-          </Link>
-        </div>
-      </motion.div>
-
-      <div className="max-w-3xl mx-auto">
+      <HeroSection />
+      <div className="max-w-3xl mx-auto mb-16 sm:mb-8">
         <h2 className="text-3xl font-semibold mb-6">
           How to Use Our Components
         </h2>

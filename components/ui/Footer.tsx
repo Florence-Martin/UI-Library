@@ -1,18 +1,32 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
+import { motion, useScroll } from "framer-motion";
 import clsx from "clsx";
 import { Linkedin, Github } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
-  const currentYear = useMemo(() => new Date().getFullYear(), []);
+  const currentYear = new Date().getFullYear();
+  const { scrollYProgress } = useScroll();
+  const [showFooter, setShowFooter] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.onChange((progress) => {
+      setShowFooter(progress > 0.95); // Afficher le footer quand on atteint 95% du scroll
+    });
+    return () => unsubscribe();
+  }, [scrollYProgress]);
 
   return (
-    <footer
+    <motion.footer
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: showFooter ? 1 : 0, y: showFooter ? 0 : 50 }}
+      transition={{ duration: 0.5 }}
       className={clsx(
-        "sticky bottom-0 bg-gray-100 dark:bg-gray-800 py-6 z-10",
-        "text-sm text-gray-600 dark:text-gray-300"
+        "bg-gray-100 dark:bg-gray-800 py-6 z-10",
+        "text-sm text-gray-600 dark:text-gray-300",
+        "fixed bottom-0 left-0 w-full"
       )}
     >
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-center md:text-left">
@@ -33,7 +47,7 @@ export default function Footer() {
           />
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }
 
