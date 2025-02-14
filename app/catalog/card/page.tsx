@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import useSWR, { mutate } from "swr"; // Importer le hook useSWR
 
 import BackToCatalog from "@/components/BackToCatalog";
@@ -29,11 +29,22 @@ const CardPage = () => {
     null
   );
   const { keys, replay } = useReplayAnimation();
+  const topRef = useRef<HTMLDivElement | null>(null); // Ref pour remonter la page
+  const codeRef = useRef<HTMLDivElement | null>(null); // Ref pour la section du code
 
   // Récupération des composants depuis Firebase
   const { data: components, error } = useSWR("/api/componentsCard", fetcher);
 
   console.log("Components from Firebase:", components);
+
+  // Effet pour scroller vers le code après l'affichage
+  useEffect(() => {
+    if (selectedComponent && codeRef.current) {
+      codeRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else if (!selectedComponent && topRef.current) {
+      topRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [selectedComponent]);
 
   if (error)
     return (
@@ -53,7 +64,10 @@ const CardPage = () => {
   if (!components) return <p>Loading components...</p>;
 
   return (
-    <div className="container mx-auto mb-20 sm:mb-3 px-4 py-8 space-y-6">
+    <div
+      ref={topRef}
+      className="container mx-auto mb-20 sm:mb-3 px-4 py-8 space-y-6"
+    >
       <BackToCatalog />
       <h1 className="text-3xl font-bold">Card Components</h1>
 
@@ -85,12 +99,13 @@ const CardPage = () => {
                 </div>
                 <div className="flex flex-col md:flex-row flex-grow space-y-2 md:space-y-0 md:space-x-2">
                   <Button
-                    onClick={
-                      () =>
-                        selectedComponent === comp.name
-                          ? setSelectedComponent(null) // Désélectionne si déjà sélectionné
-                          : setSelectedComponent(comp.name) // Sélectionne si non sélectionné
-                    }
+                    onClick={() => {
+                      if (selectedComponent === comp.name) {
+                        setSelectedComponent(null);
+                      } else {
+                        setSelectedComponent(comp.name);
+                      }
+                    }}
                     startIcon={
                       selectedComponent === comp.name ? (
                         <EyeOff name="eye-off" />
@@ -119,7 +134,7 @@ const CardPage = () => {
 
       {/* Details Section */}
       {selectedComponent && (
-        <section className="mt-6">
+        <section ref={codeRef} className="mt-6">
           <h2 className="text-2xl font-semibold mb-4">
             {selectedComponent} Code
           </h2>
