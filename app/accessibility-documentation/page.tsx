@@ -66,7 +66,7 @@ const AccessibilityDocumentation = () => {
           className="text-lg text-gray-700 dark:text-gray-300"
           aria-describedby="doc-intro"
         >
-          Cette page est une guide pour aider les développeurs à intégrer les
+          Cette page est un guide pour aider les développeurs à intégrer les
           standards d’accessibilité dans leurs composants. Un design accessible
           est essentiel pour créer des expériences utilisateur inclusives.
         </motion.p>
