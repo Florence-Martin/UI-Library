@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import BackToCatalog from "@/components/BackToCatalog";
 import CircleLoader from "@/components/ui/CircleLoader";
 import CirclesLoader from "@/components/ui/CirclesLoader";
+import AlternativeCircleLoader from "@/components/ui/AlternativeCircleLoader";
 import { useReplayAnimation } from "@/hooks/useReplayAnimation";
 import { Button } from "@/components/ui/Button";
 import { Eye, EyeOff, Repeat1 } from "lucide-react";
@@ -16,6 +17,7 @@ import CodeBlock from "@/components/CodeBlock";
 const componentMap: { [key: string]: React.FC } = {
   CircleLoader,
   CirclesLoader,
+  AlternativeCircleLoader,
 };
 
 // Récupération des composants via Firebase API
