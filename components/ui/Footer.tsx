@@ -24,7 +24,7 @@ export default function Footer() {
       animate={{ opacity: showFooter ? 1 : 0, y: showFooter ? 0 : 50 }}
       transition={{ duration: 0.5 }}
       className={clsx(
-        "bg-gray-100 dark:bg-gray-800 py-6 z-10",
+        "bg-gray-100 dark:bg-gray-800 py-3 z-10",
         "text-sm text-gray-600 dark:text-gray-300",
         "fixed bottom-0 left-0 w-full"
       )}

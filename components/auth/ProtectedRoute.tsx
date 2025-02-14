@@ -11,7 +11,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (!loading) {
-      console.log("Utilisateur connecté :", user);
+      // console.log("Utilisateur connecté :", user);
       // Vérifie si l'application est en production
       if (process.env.NODE_ENV !== "development") {
         alert("Le tableau de bord est uniquement accessible en local.");

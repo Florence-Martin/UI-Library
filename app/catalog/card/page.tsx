@@ -35,8 +35,6 @@ const CardPage = () => {
   // Récupération des composants depuis Firebase
   const { data: components, error } = useSWR("/api/componentsCard", fetcher);
 
-  console.log("Components from Firebase:", components);
-
   // Effet pour scroller vers le code après l'affichage
   useEffect(() => {
     if (selectedComponent && codeRef.current) {

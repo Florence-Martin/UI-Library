@@ -34,8 +34,6 @@ export default function LoaderPage() {
   // Récupération des composants depuis Firebase
   const { data: components, error } = useSWR("/api/componentsLoader", fetcher);
 
-  console.log("Components from Firebase:", components);
-
   // Effet pour scroller vers le code après l'affichage
   useEffect(() => {
     if (selectedComponent && codeRef.current) {
