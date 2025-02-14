@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-
 const AlternativeCircleLoader: React.FC = () => {
   return (
     <div className="flex justify-center items-center h-64">
