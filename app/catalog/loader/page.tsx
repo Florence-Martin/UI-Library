@@ -1,39 +1,47 @@
 "use client";
 
-import React, { useState } from "react";
-import useSWR, { mutate } from "swr"; // Importer le hook useSWR
+import React, { useEffect, useRef, useState } from "react";
 
 import BackToCatalog from "@/components/BackToCatalog";
-import CodeBlock from "@/components/CodeBlock";
-import { Button } from "@/components/ui/Button";
+import CircleLoader from "@/components/ui/CircleLoader";
+import CirclesLoader from "@/components/ui/CirclesLoader";
 import { useReplayAnimation } from "@/hooks/useReplayAnimation";
+import { Button } from "@/components/ui/Button";
 import { Eye, EyeOff, Repeat1 } from "lucide-react";
-
-// Importer les composants
-import SlideCard from "@/components/ui/SlideCard";
-import SlideCardSkeleton from "@/components/ui/SlideCardSkeleton";
-import AnimatedCard from "@/components/ui/AnimatedCard";
+import useSWR, { mutate } from "swr";
+import SkeletonLoader from "@/components/ui/SkeletonLoader";
+import CodeBlock from "@/components/CodeBlock";
 
 // Associer les noms des composants aux vrais composants React
 const componentMap: { [key: string]: React.FC } = {
-  SlideCard,
-  SlideCardSkeleton,
-  AnimatedCard,
+  CircleLoader,
+  CirclesLoader,
 };
 
 // Récupération des composants via Firebase API
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const CardPage = () => {
+export default function LoaderPage() {
   const [selectedComponent, setSelectedComponent] = useState<string | null>(
     null
   );
   const { keys, replay } = useReplayAnimation();
+  const topRef = useRef<HTMLDivElement | null>(null); // Ref pour remonter la page
+  const codeRef = useRef<HTMLDivElement | null>(null); // Ref pour la section du code
 
   // Récupération des composants depuis Firebase
-  const { data: components, error } = useSWR("/api/componentsCard", fetcher);
+  const { data: components, error } = useSWR("/api/componentsLoader", fetcher);
 
   console.log("Components from Firebase:", components);
+
+  // Effet pour scroller vers le code après l'affichage
+  useEffect(() => {
+    if (selectedComponent && codeRef.current) {
+      codeRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else if (!selectedComponent && topRef.current) {
+      topRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [selectedComponent]);
 
   if (error)
     return (
@@ -43,19 +51,30 @@ const CardPage = () => {
           🚨 Failed to load components: {error.message}
         </p>
         <button
-          onClick={() => mutate("/api/componentsCard")} // Recharge SWR
+          onClick={() => mutate("/api/componentsLoader")} // Recharge SWR
           className="mt-2 px-4 py-2 bg-red-600 text-white rounded"
         >
           Try again 🔄
         </button>
       </div>
     );
-  if (!components) return <p>Loading components...</p>;
+  if (!components) {
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[...Array(6)].map((_, i) => (
+          <SkeletonLoader key={i} />
+        ))}
+      </div>
+    );
+  }
 
   return (
-    <div className="container mx-auto mb-20 sm:mb-3 px-4 py-8 space-y-6">
+    <div
+      ref={topRef}
+      className="container mx-auto mb-20 sm:mb-3 px-4 py-8 space-y-6"
+    >
       <BackToCatalog />
-      <h1 className="text-3xl font-bold">Card Components</h1>
+      <h1 className="text-3xl font-bold">Loader Component</h1>
 
       {/* Preview Section */}
       <section>
@@ -85,12 +104,13 @@ const CardPage = () => {
                 </div>
                 <div className="flex flex-col md:flex-row flex-grow space-y-2 md:space-y-0 md:space-x-2">
                   <Button
-                    onClick={
-                      () =>
-                        selectedComponent === comp.name
-                          ? setSelectedComponent(null) // Désélectionne si déjà sélectionné
-                          : setSelectedComponent(comp.name) // Sélectionne si non sélectionné
-                    }
+                    onClick={() => {
+                      if (selectedComponent === comp.name) {
+                        setSelectedComponent(null);
+                      } else {
+                        setSelectedComponent(comp.name);
+                      }
+                    }}
                     startIcon={
                       selectedComponent === comp.name ? (
                         <EyeOff name="eye-off" />
@@ -119,7 +139,7 @@ const CardPage = () => {
 
       {/* Details Section */}
       {selectedComponent && (
-        <section className="mt-6">
+        <section ref={codeRef} className="mt-6">
           <h2 className="text-2xl font-semibold mb-4">
             {selectedComponent} Code
           </h2>
@@ -168,26 +188,19 @@ const CardPage = () => {
           </Button>
         </section>
       )}
-
       {/* Features Section */}
       <section>
         <h2 className="text-2xl font-semibold mb-4">Features</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li>Responsive design with mobile menu</li>
-          <li>Hover effect with animation</li>
         </ul>
       </section>
 
       {/* Customization Section */}
       <section>
         <h2 className="text-2xl font-semibold mb-4">Customization</h2>
-        <p>
-          You can customize the Card component by changing the colors, text, and
-          content to match your design system.
-        </p>
+        <p>You can customize the Loader component by changing the colors.</p>
       </section>
     </div>
   );
-};
-
-export default CardPage;
+}

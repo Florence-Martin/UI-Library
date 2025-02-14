@@ -32,6 +32,13 @@ export const components: UIComponent[] = [
     path: "/catalog/card",
   },
   {
+    id: "loader",
+    name: "Loader",
+    description:
+      "A loader component with a spinning circle animation and drop shadow",
+    category: "In Progress",
+  },
+  {
     id: "tooltip",
     name: "Tooltip",
     description: "A tooltip component for displaying additional information",
@@ -112,6 +119,6 @@ export const components: UIComponent[] = [
     name: "Wave Water",
     description:
       "A wave water component with animated waves that dynamically visualizes progress in percentage.",
-    category: "Progress",
+    category: "In Progress",
   },
 ];
